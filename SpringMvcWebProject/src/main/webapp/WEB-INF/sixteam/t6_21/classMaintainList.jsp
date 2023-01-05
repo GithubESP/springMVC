@@ -46,11 +46,12 @@
 			<tr>
 				<th>課程編號</th>
 				<th>課程名稱</th>
-<!-- 				<th>課程圖片</th> -->
+				<th>課程圖片</th>
+				<th>圖片名字</th>
 				<th>課程老師</th>
 <!-- 				<th>課程價錢</th> -->
 <!-- 				<th>課程分類</th> -->
-<!-- 				<th>購物車</th> -->
+				<th>購物車</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -58,8 +59,16 @@
 				<tr>
 					<td>${bean.classId}</td>
 					<td>${bean.className}</td>
+					<td><img height='100' width='80'src="t6_21images.controller/${bean.classPictureName}"></td>
+					<td>${bean.classPictureName}</td>
      				<td>${bean.classTeacherName}</td>
+     				<td>
+					<div style="display:inline">
+           <a href="t6_21deleteClass.controller/${bean.classId}"><input type="submit" value="刪除"></a>
+           <a href="<c:url value='/ClassPreUpdateServlet.do?classId=${bean.classId}'/>"><input type="submit" value="修改"></a>
+				</div>
 				</tr>
+     				
 			</c:forEach>
 		</tbody>
                                 </table>

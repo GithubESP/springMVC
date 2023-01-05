@@ -21,6 +21,7 @@ public class UploadFileController {
 	public String processMainAction() {
 		return "uploadFile";
 	}
+	
 	@PostMapping("/upload.controller")
 	@ResponseBody
 	public String processAction(@RequestParam("myFiles") MultipartFile mf) throws IOException {

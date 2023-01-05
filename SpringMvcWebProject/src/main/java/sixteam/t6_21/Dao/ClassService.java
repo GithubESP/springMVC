@@ -17,5 +17,20 @@ public class ClassService {
 	public List<ClassBean> selectAll(){
 		return cDao.selectAll();
 	}
+	public ClassBean findById(int classId) {
+		return cDao.findById(classId);
+	}
+	public ClassBean insert(ClassBean cBean) {
+		return cDao.insert(cBean);
+	}
+	
+	public ClassBean update(ClassBean cBean) {
+		return cDao.update(cBean);
+	}
+
+	public boolean delete(ClassBean cBean) {
+		return cDao.delete(cBean);
+	}
+
 
 }

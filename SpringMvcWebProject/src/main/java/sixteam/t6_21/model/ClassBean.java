@@ -21,56 +21,76 @@ public class ClassBean {
 	private String className;
 	@Column(name = "CLASSTEACHERNAME")
 	private String classTeacherName;
-	@Column(name = "classPrice")
-	private Double classPrice;
+//	@Column(name = "classPrice")
+//	private Double classPrice;
+	@Column(name = "classPictureName")
+	private String classPictureName;
 	@Column(name = "classPicture1")
 	private byte[] classPicture1;
-	@Column(name = "classTeacherPicture")
-	private byte[] classTeacherPicture;
-	@Column(name = "classType")
-	private String classType;
-	@Column(name = "classDate")
-	private Date classDate;
-	@Column(name = "classAddress")
-	private String classAddress;
-	@Column(name = "classPeople")
-	private int classPeople;
+//	@Column(name = "classTeacherPicture")
+//	private byte[] classTeacherPicture;
+//	@Column(name = "classType")
+//	private String classType;
+//	@Column(name = "classDate")
+//	private Date classDate;
+//	@Column(name = "classAddress")
+//	private String classAddress;
+//	@Column(name = "classPeople")
+//	private int classPeople;
 	
 	public ClassBean() {
 	}
 
 	
-	public ClassBean(int classId, String className, String classTeacherName, Double classPrice, byte[] classPicture1,
-			byte[] classTeacherPicture, String classType, Date classDate, String classAddress, int classPeople) {
-		this.classId = classId;
-		this.className = className;
-		this.classTeacherName = classTeacherName;
-		this.classPrice = classPrice;
-		this.classPicture1 = classPicture1;
-		this.classTeacherPicture = classTeacherPicture;
-		this.classType = classType;
-		this.classDate = classDate;
-		this.classAddress = classAddress;
-		this.classPeople = classPeople;
-	}
-	public ClassBean( String className, String classTeacherName, Double classPrice, byte[] classPicture1,
-			byte[] classTeacherPicture, String classType, Date classDate, String classAddress, int classPeople) {
-		this.className = className;
-		this.classTeacherName = classTeacherName;
-		this.classPrice = classPrice;
-		this.classPicture1 = classPicture1;
-		this.classTeacherPicture = classTeacherPicture;
-		this.classType = classType;
-		this.classDate = classDate;
-		this.classAddress = classAddress;
-		this.classPeople = classPeople;
-	}
+//	public ClassBean(int classId, String className, String classTeacherName, Double classPrice, byte[] classPicture1,
+//			byte[] classTeacherPicture, String classType, Date classDate, String classAddress, int classPeople) {
+//		this.classId = classId;
+//		this.className = className;
+//		this.classTeacherName = classTeacherName;
+//		this.classPrice = classPrice;
+//		this.classPicture1 = classPicture1;
+//		this.classTeacherPicture = classTeacherPicture;
+//		this.classType = classType;
+//		this.classDate = classDate;
+//		this.classAddress = classAddress;
+//		this.classPeople = classPeople;
+//	}
+//	public ClassBean( String className, String classTeacherName, Double classPrice, byte[] classPicture1,
+//			byte[] classTeacherPicture, String classType, Date classDate, String classAddress, int classPeople) {
+//		this.className = className;
+//		this.classTeacherName = classTeacherName;
+//		this.classPrice = classPrice;
+//		this.classPicture1 = classPicture1;
+//		this.classTeacherPicture = classTeacherPicture;
+//		this.classType = classType;
+//		this.classDate = classDate;
+//		this.classAddress = classAddress;
+//		this.classPeople = classPeople;
+//	}
+	
+	
 
+
+	public ClassBean(String className, String classTeacherName,byte[] classPicture1) {
+		this.className = className;
+		this.classTeacherName = classTeacherName;
+		this.classPicture1 =classPicture1;
+	}
+	
+
+	public ClassBean(String className, byte[] classPicture1, String classPictureName, String classTeacherName) {
+		super();
+		this.className = className;
+		this.classTeacherName = classTeacherName;
+		this.classPictureName = classPictureName;
+		this.classPicture1 = classPicture1;
+	}
 
 
 	public int getClassId() {
 		return classId;
 	}
+
 
 	public void setClassId(int classId) {
 		this.classId = classId;
@@ -92,13 +112,13 @@ public class ClassBean {
 		this.classTeacherName = classTeacherName;
 	}
 
-	public Double getClassPrice() {
-		return classPrice;
-	}
-
-	public void setClassPrice(Double classPrice) {
-		this.classPrice = classPrice;
-	}
+//	public Double getClassPrice() {
+//		return classPrice;
+//	}
+//
+//	public void setClassPrice(Double classPrice) {
+//		this.classPrice = classPrice;
+//	}
 
 	public byte[] getClassPicture1() {
 		return classPicture1;
@@ -108,45 +128,45 @@ public class ClassBean {
 		this.classPicture1 = classPicture1;
 	}
 
-	public byte[] getClassTeacherPicture() {
-		return classTeacherPicture;
-	}
-
-	public void setClassTeacherPicture(byte[] classTeacherPicture) {
-		this.classTeacherPicture = classTeacherPicture;
-	}
-
-	public String getClassType() {
-		return classType;
-	}
-
-	public void setClassType(String classType) {
-		this.classType = classType;
-	}
-
-	public Date getClassDate() {
-		return classDate;
-	}
-
-	public void setClassDate(Date classDate) {
-		this.classDate = classDate;
-	}
-
-	public String getClassAddress() {
-		return classAddress;
-	}
-
-	public void setClassAddress(String classAddress) {
-		this.classAddress = classAddress;
-	}
-
-	public int getClassPeople() {
-		return classPeople;
-	}
-
-	public void setClassPeople(int classPeople) {
-		this.classPeople = classPeople;
-	}
+//	public byte[] getClassTeacherPicture() {
+//		return classTeacherPicture;
+//	}
+//
+//	public void setClassTeacherPicture(byte[] classTeacherPicture) {
+//		this.classTeacherPicture = classTeacherPicture;
+//	}
+//
+//	public String getClassType() {
+//		return classType;
+//	}
+//
+//	public void setClassType(String classType) {
+//		this.classType = classType;
+//	}
+//
+//	public Date getClassDate() {
+//		return classDate;
+//	}
+//
+//	public void setClassDate(Date classDate) {
+//		this.classDate = classDate;
+//	}
+//
+//	public String getClassAddress() {
+//		return classAddress;
+//	}
+//
+//	public void setClassAddress(String classAddress) {
+//		this.classAddress = classAddress;
+//	}
+//
+//	public int getClassPeople() {
+//		return classPeople;
+//	}
+//
+//	public void setClassPeople(int classPeople) {
+//		this.classPeople = classPeople;
+//	}
 
 	@Override
 	public String toString() {
@@ -157,22 +177,32 @@ public class ClassBean {
 		builder.append(className);
 		builder.append(", classTeacherName=");
 		builder.append(classTeacherName);
-		builder.append(", classPrice=");
-		builder.append(classPrice);
+//		builder.append(", classPrice=");
+//		builder.append(classPrice);
 		builder.append(", classPicture1=");
 		builder.append(Arrays.toString(classPicture1));
-		builder.append(", classTeacherPicture=");
-		builder.append(Arrays.toString(classTeacherPicture));
-		builder.append(", classType=");
-		builder.append(classType);
-		builder.append(", classDate=");
-		builder.append(classDate);
-		builder.append(", classAddress=");
-		builder.append(classAddress);
-		builder.append(", classPeople=");
-		builder.append(classPeople);
+//		builder.append(", classTeacherPicture=");
+//		builder.append(Arrays.toString(classTeacherPicture));
+//		builder.append(", classType=");
+//		builder.append(classType);
+//		builder.append(", classDate=");
+//		builder.append(classDate);
+//		builder.append(", classAddress=");
+//		builder.append(classAddress);
+//		builder.append(", classPeople=");
+//		builder.append(classPeople);
 		builder.append("]");
 		return builder.toString();
+	}
+
+
+	public String getClassPictureName() {
+		return classPictureName;
+	}
+
+
+	public void setClassPictureName(String classPictureName) {
+		this.classPictureName = classPictureName;
 	}
 
 	
