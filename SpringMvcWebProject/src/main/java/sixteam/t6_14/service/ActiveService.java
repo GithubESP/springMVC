@@ -10,7 +10,7 @@ public interface ActiveService {
 	public List<Actives> findAll();
 	
 	
-	public Actives findBId(Integer id) ;
+	public Actives findById(Integer id) ;
 	
 	
 	public Boolean delete(Integer id) ;

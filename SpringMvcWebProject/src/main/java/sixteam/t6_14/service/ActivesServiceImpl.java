@@ -25,7 +25,7 @@ public class ActivesServiceImpl implements ActiveService {
 	}
 
 	
-	public Actives findBId(Integer id) {
+	public Actives findById(Integer id) {
 		Actives active = actDao.findById(id);
 		return active;
 	}
