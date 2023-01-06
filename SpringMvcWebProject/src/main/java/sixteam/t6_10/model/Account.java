@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
 // Alt + Shift + S -> R [get set]
 
 @Entity
-@Table(name = "Account2")//Account2
+@Table(name = "Account")//Account
 @Component
-public class Account2 {
+public class Account {
 	
 	@Id
 	@Column(name = "id")
@@ -52,7 +52,7 @@ public class Account2 {
 	
 
 	
-	public Account2(Integer id, String account, String password, Blob image) {
+	public Account(Integer id, String account, String password, Blob image) {
 		super();
 		this.id = id;
 		this.account = account;
@@ -61,20 +61,20 @@ public class Account2 {
 	}
 
 
-	public Account2(Integer id, String account, String password) {
+	public Account(Integer id, String account, String password) {
 		super();
 		this.id = id;
 		this.account = account;
 		this.password = password;
 	}
 	
-	public Account2(Integer id) {
+	public Account(Integer id) {
 		super();
 		this.id = id;
 	}
 	
 	
-	public Account2() {
+	public Account() {
 //		super();
 	}
 
@@ -148,7 +148,7 @@ public class Account2 {
 	}
 
 
-	public Account2(Integer id, String account, Blob image, String password) {
+	public Account(Integer id, String account, Blob image, String password) {
 		super();
 		this.id = id;
 		this.account = account;
