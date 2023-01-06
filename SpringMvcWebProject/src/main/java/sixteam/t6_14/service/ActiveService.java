@@ -19,6 +19,6 @@ public interface ActiveService {
 	public Actives update(Actives active);
 	
 	
-	public Actives insert(Actives active) ;
+	public Actives save(Actives active) ;
 	
 }

@@ -55,7 +55,7 @@ public class ActivesDaoImpl implements ActivesDao {
 		return act;
 	}
 
-	public Actives insert(Actives active) {
+	public Actives save(Actives active) {
 		Session session = factory.getCurrentSession();
 		session.save(active);
 		return active;

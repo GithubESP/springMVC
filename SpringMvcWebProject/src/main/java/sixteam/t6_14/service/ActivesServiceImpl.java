@@ -46,9 +46,9 @@ public class ActivesServiceImpl implements ActiveService {
 	}
 
 	
-	public Actives insert(Actives active) {
+	public Actives save(Actives active) {
 
-		Actives result = actDao.insert(active);
+		Actives result = actDao.save(active);
 		return result;
 
 	}

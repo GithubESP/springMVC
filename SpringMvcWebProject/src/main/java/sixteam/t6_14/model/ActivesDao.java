@@ -12,6 +12,6 @@ public interface ActivesDao {
 
 	public Actives update(Actives actives);
 
-	public Actives insert(Actives active);
+	public Actives save(Actives active);
 
 }
