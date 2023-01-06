@@ -19,7 +19,7 @@ form {
 <a  href="http://localhost:8080/SecondServlet/index.html">回主頁</a>
 <!--  ShowAllPeopleServlet  -->
 <a href='<c:url value="/t6_23/controller/showPeople.do" />'>查詢資料(後臺用)</a>
-<a href='<c:url value="/t6_23/InsertPeopleForm_23.jsp" />' >新增資料</a>
+<a href='<c:url value="/t6_23/controller/InsertPeopleForm.controller" />' >新增資料</a>
 </div>
 <div>
 <form action="<c:url value='/userSelectControllersafe' />" method="POST">

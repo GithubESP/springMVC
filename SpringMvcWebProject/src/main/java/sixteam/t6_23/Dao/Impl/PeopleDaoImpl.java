@@ -48,12 +48,14 @@ public class PeopleDaoImpl implements PeopleDao_23 {
 		
 		PeopleBean_23 peoBean = session.get(PeopleBean_23.class, id);
 		
-		session.close();
 		
 		if(peoBean!=null) {
 			session.delete(peoBean);
+			session.flush();
+			session.close();
 			return true;
 		}
+		session.close();
 		return false;
 		
 	}
@@ -90,10 +92,13 @@ public class PeopleDaoImpl implements PeopleDao_23 {
 	public void save(PeopleBean_23 bean) {
 		Session session = factory.openSession();
 		
-		PeopleBean_23 peoBean = session.get(PeopleBean_23.class, bean.getUserID());
+//		PeopleBean_23 peoBean = session.get(PeopleBean_23.class, bean.getUserID());
 		
-		if(peoBean==null) {
+		if(bean!=null) {
 			session.save(bean);
+			session.flush();
+			System.out.println(bean.getAddress());
+			System.out.println("666666666666666666666666");
 		}
 		session.close();
 	}

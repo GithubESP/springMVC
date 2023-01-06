@@ -13,7 +13,7 @@
 性別: ${ peopleBean.sex }
 地址: ${ peopleBean.address }
 <hr>
-<a href='<c:url value="/t6_23/UserSelect.jsp" />'>回首頁</a><br>
+<a href='<c:url value="/selectaction.controller2" />'>回首頁</a><br>
 五秒鐘後自動回首頁<br>
 <font id="num" size="7" face="impact">5</font>
 
@@ -23,7 +23,7 @@
 			if (sec > 1) 
 				num.innerHTML = --sec;
 			else
-				location = '<c:url value="/t6_23/UserSelect.jsp" />';
+				location = '<c:url value="/selectaction.controller2" />';
 		}
 	</script>
 </body>

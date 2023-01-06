@@ -9,7 +9,7 @@
 </head>
 <body>
 	<form name="insertMemberFormA"
-		action="<c:url value='/t6_23/controller/ProcessPeopleServlet'  />"
+		action="<c:url value='/processpeople.controller'  />"
 		method="POST" enctype="multipart/form-data">
 		<table border="1">
 			<thead>
