@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import sixteam.t6_10.model.AccountManager;
-import sixteam.t6_10.model.AccountService;
+import sixteam.t6_10.model.AccountManagerService;
 
 @Controller
 
 public class AccountManagerController {
 	
 	@Autowired
-	private AccountService aService;
+	private AccountManagerService aService;
 	
 	@RequestMapping(path = "/loginsystemmain.controller", method = RequestMethod.GET)
 	public String processMainAction() {

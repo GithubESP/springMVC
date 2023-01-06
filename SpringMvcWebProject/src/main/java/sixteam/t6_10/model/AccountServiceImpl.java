@@ -10,7 +10,7 @@ import t6_10.dao.AccountDao;
 import t6_10.service.AccountService;
 import tw.hibernatedemo.util.HibernateUtil;
 
-public class AccountServiceImpl implements AccountService {
+public class AccountServiceImpl implements AccountManagerService {
 	private AccountManagerDao accountDao;
 	SessionFactory factory = HibernateUtil.getSessionFactory();
 
@@ -19,12 +19,12 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public List<Account> showAllAccount() {
+	public List<Account2> showAllAccount() {
 		Session session = factory.getCurrentSession();
 		try {
 			session.beginTransaction();
-			List<Account> accountList = null;
-			List<Account> temp = accountDao.selectAll();
+			List<Account2> accountList = null;
+			List<Account2> temp = accountDao.selectAll();
 			if (temp != null) {
 				accountList = temp;
 			}
@@ -56,13 +56,13 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Account modify(Account account) {
+	public Account2 modify(Account2 account) {
 		Session session = factory.getCurrentSession();
 		try {
 			session.beginTransaction();
 			System.out.println(account);
 			System.out.println("modify"+session);
-			Account result = accountDao.update(account);
+			Account2 result = accountDao.update(account);
 			session.getTransaction().commit();
 			return result;
 		} catch (Exception e) {
@@ -75,11 +75,11 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Account showAccount(int id) {
+	public Account2 showAccount(int id) {
 		Session session = factory.getCurrentSession();
 		try {
 			session.beginTransaction();
-			Account account = accountDao.select(id);
+			Account2 account = accountDao.select(id);
 			session.getTransaction().commit();
 			return account;
 		} catch (Exception e) {
@@ -92,11 +92,11 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Account add(Account account) {
+	public Account2 add(Account2 account) {
 		Session session = factory.getCurrentSession();
 		try {
 			session.beginTransaction();
-			Account result = accountDao.add(account);
+			Account2 result = accountDao.add(account);
 			System.out.println("result"+result);
 			session.getTransaction().commit();
 			return result;

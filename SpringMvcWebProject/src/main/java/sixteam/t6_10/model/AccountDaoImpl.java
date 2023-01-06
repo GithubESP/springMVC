@@ -32,10 +32,10 @@ public class AccountDaoImpl implements AccountManagerDao{
 	}
 
 	@Override
-	public List<Account> selectAll(){
+	public List<Account2> selectAll(){
 		Session session = factory.getCurrentSession();
-    	Query<Account> query = session.createQuery("from Account ORDER BY id ASC", Account.class);
-    	List<Account> result = query.getResultList();
+    	Query<Account2> query = session.createQuery("from Account ORDER BY id ASC", Account2.class);
+    	List<Account2> result = query.getResultList();
     	System.out.println(result);
     	return result;
 	}	
@@ -43,7 +43,7 @@ public class AccountDaoImpl implements AccountManagerDao{
 	@Override
 	public boolean delete(Integer id) {
 		Session session = factory.getCurrentSession();
-		Account account = session.get(Account.class, id);
+		Account2 account = session.get(Account2.class, id);
 		
 		if(account != null) {
 			session.delete(account);
@@ -53,9 +53,9 @@ public class AccountDaoImpl implements AccountManagerDao{
 	}
 	
 	@Override
-	public Account update(Account account) {
+	public Account2 update(Account2 account) {
 		Session session = factory.getCurrentSession();
-		Account accountBean = session.get(Account.class, account.getId());
+		Account2 accountBean = session.get(Account2.class, account.getId());
 		if(accountBean != null) {
 			accountBean.setAccount(account.getAccount());
 			accountBean.setPassword(account.getPassword());
@@ -65,13 +65,13 @@ public class AccountDaoImpl implements AccountManagerDao{
 	}
 	
 	@Override
-	public Account select(Integer id) {
+	public Account2 select(Integer id) {
 		Session session = factory.getCurrentSession();
-		return session.get(Account.class, id);
+		return session.get(Account2.class, id);
 	}
 
 	@Override
-	public Account add(Account account) {
+	public Account2 add(Account2 account) {
 		Session session = factory.getCurrentSession();
 			System.out.println("account: "+account);
 			session.save(account);
