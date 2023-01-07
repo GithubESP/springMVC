@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>Form</h3>
+	<h3>form</h3>
 	<form action="hello2.controller" method="POST">
 
 		<table>
