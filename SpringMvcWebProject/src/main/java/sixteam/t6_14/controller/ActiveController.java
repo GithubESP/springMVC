@@ -89,8 +89,39 @@ public ModelAndView findAll(Model model) {
 	List<Actives> actives = activeService.findAll();
 	model.addAttribute("actives",actives);
 	ModelAndView mav = new ModelAndView();
-	mav.setViewName("/t6_14/jsp/actives");
+	mav.setViewName("t6_14/mainactive");
 	return mav;
+	
+	
+	
+//	@PostMapping("/insertClass.controller")
+//	public ModelAndView processAction(@RequestParam("name") String name, @RequestParam("uploadFile") MultipartFile mf, 
+//            @RequestParam("teacher") String teacher,Model m) throws IOException {
+//		
+//		String fileName = mf.getOriginalFilename();
+//		
+//		byte[] b = mf.getBytes();
+//		
+//		if(fileName != null && fileName.length()!=0) {
+//			saveClass(name,b,fileName,teacher);
+//		}
+//		
+//		return new ModelAndView("redirect:/t6_21ClassMaintain.controller");
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //	return "t6_14/jsp/actives";
 }
 //@GetMapping("/{id}")

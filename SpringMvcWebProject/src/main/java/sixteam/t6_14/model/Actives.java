@@ -1,6 +1,5 @@
 package sixteam.t6_14.model;
 
-import java.sql.Blob;
 import java.sql.Date;
 
 import javax.persistence.Entity;
@@ -18,9 +17,21 @@ public class Actives {
 	
 	private String activeName;
 	
-	private Blob activeImg;
+	private byte[] activeImg;
 	
 	private String activeDescription;
+	
+	
+
+
+
+
+	private Date activeStartDate;
+	private Date activeEndDate;
+	
+	private String activeLocation;
+	private String activeHost;
+	
 	
 	public Actives(String activeName, String activeDescription, Date activeStartDate, Date activeEndDate,
 			String activeLocation, String activeHost) {
@@ -33,18 +44,6 @@ public class Actives {
 		this.activeHost = activeHost;
 	}
 
-
-
-
-
-	private Date activeStartDate;
-	private Date activeEndDate;
-	
-	private String activeLocation;
-	private String activeHost;
-	
-	
-	
 	
 
 	public Actives(Integer activeID, String activeName, String activeDescription, Date activeStartDate,
@@ -110,7 +109,7 @@ public class Actives {
 
 
 
-	public Blob getActiveImg() {
+	public byte[] getActiveImg() {
 		return activeImg;
 	}
 
@@ -118,7 +117,7 @@ public class Actives {
 
 
 
-	public void setActiveImg(Blob activeImg) {
+	public void setActiveImg(byte[] activeImg) {
 		this.activeImg = activeImg;
 	}
 
