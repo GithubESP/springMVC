@@ -11,12 +11,12 @@
 <form action="checklogin.controller" method="post">
     <table>
        <tr>
-          <td>UserName:</td>
+          <td>帳號:</td>
           <td><input type="text" name="userName"/></td>
           <td>${errors.name}</td>
        </tr>
        <tr>
-          <td>Password:</td>
+          <td>密碼:</td>
           <td><input type="password" name="userPwd"/></td>
           <td>${errors.pwd}</td>
        </tr>
