@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import sixteam.t6_14.model.Actives;
 import sixteam.t6_14.service.ActiveService;
@@ -53,5 +54,30 @@ public class ActiveController {
 		Actives active = activeService.findById(id);
 		return active;
 	}
+
+
+
+
+
+
+//@RequestMapping("/hel")
+//public String hello() {
+//	return"t6_14/backjsp/NewFile.jsp";
+//}
+
+@RequestMapping("/hel")
+public ModelAndView hello() {
+ModelAndView mav = new ModelAndView();
+mav.setViewName("t6_14/backjsp/NewFile");
+return mav;
+}
+
+
+
+
+
+
+
+
 
 }
