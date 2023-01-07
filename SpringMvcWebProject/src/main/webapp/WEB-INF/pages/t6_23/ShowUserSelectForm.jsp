@@ -91,7 +91,7 @@ form {
 				<tr bgcolor='tan'>
 					<td height="50" colspan="4" align="center"><a
 						href="javascript:history.back()">回上頁</a>
-					<a href='<c:url value="/t6_23/UserSelect.jsp" />'>回首頁</a></td>
+					<a href='<c:url value="/selectaction.controller2" />'>回首頁</a></td>
 				</tr>
 			</tbody>
 		</table>

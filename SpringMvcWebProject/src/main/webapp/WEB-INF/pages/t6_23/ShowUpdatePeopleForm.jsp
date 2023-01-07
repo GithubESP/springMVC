@@ -118,7 +118,7 @@
 				<tr bgcolor='tan'>
 					<td height="50" colspan="2" align="center"><input
 						type="submit" value="送出"> <input type="reset" value="清除"><a
-						href='<c:url value="/t6_23/UserSelect.jsp" />'>回首頁</a></td>
+						href='<c:url value="/selectaction.controller2" />'>回首頁</a></td>
 				</tr>
 			</tbody>
 		</table>

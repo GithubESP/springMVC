@@ -144,17 +144,18 @@ public class PeopleCRUDController {
 	}
 	
 	@PostMapping("/processpeople.controller")
-	public String InsertPeopleController(HttpServletRequest request,@RequestParam("userId") Integer userid, @RequestParam("name") String name, @RequestParam("age") Integer age,@RequestParam("photo") MultipartFile mf,
+	public String InsertPeopleController(HttpServletRequest request,@RequestParam("userId") Integer userid, @RequestParam("name") String name, @RequestParam("age") Integer age,@RequestParam("photo") @Nullable MultipartFile mf,
 			@RequestParam("gender") String sex, @RequestParam("address") String address, @RequestParam("star_sign") String star, @RequestParam("profession") String profession,
 			@RequestParam("religion") String religion, @RequestParam("income") @Nullable Double income, @RequestParam("sex_in") @Nullable String sex_in, @RequestParam("hobby") String hobby,
 			@RequestParam("dream") String dream, @RequestParam("personality") String personality, @RequestParam("emotion") String emotion, @RequestParam("introduction") String introduction, Model m) throws IOException, ServletException, SQLException {
+		PeopleBean_23 pb = new PeopleBean_23();
 		
 		String saveFileDir ="c:/gitapp/git_t6_02/SpringMvcWebProject/src/main/webapp/WEB-INF/resources/images/t6_23";
 		String filePath = String.valueOf(userid)+".jpg";
 		File saveFilePath = new File(saveFileDir,String.valueOf(userid)+".jpg");
 		mf.transferTo(saveFilePath);
+		pb.setImages(filePath);
 		
-		PeopleBean_23 pb = new PeopleBean_23();
 		pb.setUserID(userid);
 		pb.setName(name);
 		pb.setAge(age);
@@ -170,7 +171,6 @@ public class PeopleCRUDController {
 		pb.setIntroduction(introduction);
 		pb.setReligion(religion);
 		pb.setSex_in(sex_in);
-		pb.setImages(filePath);
 		System.out.println("------------------");
 		pService.save(pb);
 		
@@ -184,15 +184,20 @@ public class PeopleCRUDController {
 			@RequestParam("religion") String religion, @RequestParam("income") @Nullable Double income, @RequestParam("sex_in") @Nullable String sex_in, @RequestParam("hobby") String hobby,
 			@RequestParam("dream") String dream, @RequestParam("personality") String personality, @RequestParam("emotion") String emotion, @RequestParam("introduction") String introduction, Model m) throws IllegalStateException, IOException  {
 		PeopleBean_23 pb = new PeopleBean_23();
+		PeopleBean_23 bean = pService.selectById(userid);
 		String fileName = mf.getOriginalFilename();
 		System.out.println("---------------------------------");
-		System.out.println("fileName: "+fileName);
+		System.out.println("fileName: \""+fileName+"\"");
 		if(!fileName.equals("")) {
+			System.out.println("hgfehuldlafvkhanhn" + !fileName.equals(""));
 		String saveFileDir ="c:/gitapp/git_t6_02/SpringMvcWebProject/src/main/webapp/WEB-INF/resources/images/t6_23";
-		String filePath = String.valueOf(userid)+"2.jpg";
-		File saveFilePath = new File(saveFileDir,String.valueOf(userid)+"2.jpg");
+		String filePath = String.valueOf(userid)+".jpg";
+		File saveFilePath = new File(saveFileDir,String.valueOf(userid)+".jpg");
 		mf.transferTo(saveFilePath);
 		pb.setImages(filePath);
+		}else {
+			System.out.println("hgfehuldlafvkhanhn" + !fileName.equals(""));
+			pb.setImages(bean.getImages());
 		}
 		
 		pb.setUserID(userid);

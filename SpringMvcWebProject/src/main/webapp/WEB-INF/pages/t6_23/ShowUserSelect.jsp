@@ -68,7 +68,6 @@ form {
 		<hr>
 		<a
 						href="javascript:history.back()">回上頁</a>
-		<a href="<c:url value='/t6_23/UserSelect.jsp' />">回首頁</a>
 	</div>
 </body>
 </html>

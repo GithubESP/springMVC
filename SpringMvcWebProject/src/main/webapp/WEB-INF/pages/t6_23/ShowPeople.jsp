@@ -36,7 +36,7 @@
 		</table>
 		<p>
 		<hr>
-		<a href="<c:url value='/t6_23/UserSelect.jsp' />">回首頁</a>
+		<a href="<c:url value='/selectaction.controller2' />">回首頁</a>
 	</div>
 </body>
 </html>
