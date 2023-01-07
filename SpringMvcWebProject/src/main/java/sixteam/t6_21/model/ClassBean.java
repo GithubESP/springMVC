@@ -1,8 +1,5 @@
 package sixteam.t6_21.model;
 
-import java.sql.Date;
-import java.util.Arrays;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,15 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
-@Entity @Table(name = "class")
+
+@Entity
+@Table(name = "class")
 @Component
 public class ClassBean {
-	@Id @Column(name = "CLASSID")
+	@Id
+	@Column(name = "classId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int classId;
-	@Column(name = "CLASSNAME")
+	@Column(name = "className")
 	private String className;
-	@Column(name = "CLASSTEACHERNAME")
+	@Column(name = "classTeacherName")
 	private String classTeacherName;
 //	@Column(name = "classPrice")
 //	private Double classPrice;
@@ -37,46 +37,26 @@ public class ClassBean {
 //	private String classAddress;
 //	@Column(name = "classPeople")
 //	private int classPeople;
-	
-	public ClassBean() {
-	}
 
-	
-//	public ClassBean(int classId, String className, String classTeacherName, Double classPrice, byte[] classPicture1,
-//			byte[] classTeacherPicture, String classType, Date classDate, String classAddress, int classPeople) {
-//		this.classId = classId;
-//		this.className = className;
-//		this.classTeacherName = classTeacherName;
-//		this.classPrice = classPrice;
-//		this.classPicture1 = classPicture1;
-//		this.classTeacherPicture = classTeacherPicture;
-//		this.classType = classType;
-//		this.classDate = classDate;
-//		this.classAddress = classAddress;
-//		this.classPeople = classPeople;
-//	}
-//	public ClassBean( String className, String classTeacherName, Double classPrice, byte[] classPicture1,
-//			byte[] classTeacherPicture, String classType, Date classDate, String classAddress, int classPeople) {
-//		this.className = className;
-//		this.classTeacherName = classTeacherName;
-//		this.classPrice = classPrice;
-//		this.classPicture1 = classPicture1;
-//		this.classTeacherPicture = classTeacherPicture;
-//		this.classType = classType;
-//		this.classDate = classDate;
-//		this.classAddress = classAddress;
-//		this.classPeople = classPeople;
-//	}
-	
-	
-
-
-	public ClassBean(String className, String classTeacherName,byte[] classPicture1) {
+	public ClassBean(String className, String classTeacherName, byte[] classPicture1) {
 		this.className = className;
 		this.classTeacherName = classTeacherName;
-		this.classPicture1 =classPicture1;
+		this.classPicture1 = classPicture1;
+	}
+
+	public ClassBean() {
 	}
 	
+	
+	
+	public ClassBean(int classId, String className, String classTeacherName, String classPictureName,
+			byte[] classPicture1) {
+		this.classId = classId;
+		this.className = className;
+		this.classTeacherName = classTeacherName;
+		this.classPictureName = classPictureName;
+		this.classPicture1 = classPicture1;
+	}
 
 	public ClassBean(String className, byte[] classPicture1, String classPictureName, String classTeacherName) {
 		super();
@@ -86,11 +66,9 @@ public class ClassBean {
 		this.classPicture1 = classPicture1;
 	}
 
-
 	public int getClassId() {
 		return classId;
 	}
-
 
 	public void setClassId(int classId) {
 		this.classId = classId;
@@ -179,8 +157,10 @@ public class ClassBean {
 		builder.append(classTeacherName);
 //		builder.append(", classPrice=");
 //		builder.append(classPrice);
-		builder.append(", classPicture1=");
-		builder.append(Arrays.toString(classPicture1));
+		builder.append(", classPictureName=");
+		builder.append(classPictureName);
+//		builder.append(", classPicture1=");
+//		builder.append(Arrays.toString(classPicture1));
 //		builder.append(", classTeacherPicture=");
 //		builder.append(Arrays.toString(classTeacherPicture));
 //		builder.append(", classType=");
@@ -195,15 +175,12 @@ public class ClassBean {
 		return builder.toString();
 	}
 
-
 	public String getClassPictureName() {
 		return classPictureName;
 	}
-
 
 	public void setClassPictureName(String classPictureName) {
 		this.classPictureName = classPictureName;
 	}
 
-	
 }

@@ -63,7 +63,7 @@
                         </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="<c:url value='/controller/classListMaintainServlet'/>">課程查詢</a>
+                                    <a class="nav-link" href="t6_21ClassMaintain.controller">課程查詢</a>
                                     <a class="nav-link" href="">訂單查詢</a>
                                 </nav>
                             </div>

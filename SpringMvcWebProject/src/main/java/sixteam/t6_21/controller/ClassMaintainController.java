@@ -1,5 +1,7 @@
 package sixteam.t6_21.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import sixteam.model.Picture;
 import sixteam.t6_21.Dao.ClassService;
@@ -48,46 +51,35 @@ public class ClassMaintainController {
 	}
 	
 	@PostMapping("/insertClass.controller")
-	@ResponseBody
-	public String processAction(@RequestParam("name") String name, @RequestParam("uploadFile") MultipartFile mf, 
-            @RequestParam("teacher") String teacher) throws IOException {
+	public ModelAndView processAction(@RequestParam("name") String name, @RequestParam("uploadFile") MultipartFile mf, 
+            @RequestParam("teacher") String teacher,Model m) throws IOException {
 		
 		String fileName = mf.getOriginalFilename();
-		System.out.println("fileName1:" + fileName);
-		
-		String saveFileDir ="C:/sixteam/SpringMvcWebProject/src/main/webapp/WEB-INF/sixteam/t6_21/images";
-		File saveFilePath = new File(saveFileDir,fileName);
 		
 		byte[] b = mf.getBytes();
-		mf.transferTo(saveFilePath);
 		
 		if(fileName != null && fileName.length()!=0) {
-			
-			
 			saveClass(name,b,fileName,teacher);
 		}
 		
-		return "index-background";
+		return new ModelAndView("redirect:/t6_21ClassMaintain.controller");
 	}
 	
 	private void saveClass(String className, byte[] b,String classPictureName,String teacherName) {
 		ClassBean cBean = new ClassBean(className,b,classPictureName,teacherName);	
 		classService.insert(cBean);
 	}
-	
-	@RequestMapping("/t6_21images.controller/{classPictureName}")
+
+	@RequestMapping("/t6_21images.controller/{classId}")
 	@ResponseBody
-	public byte[] processByteArrayImageAction(@PathVariable("classPictureName") String classPictureName,HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public byte[] processByteArrayImageAction(@PathVariable("classId") int classId,HttpServletRequest request, HttpServletResponse response) throws IOException {
+		ClassBean cBean = classService.findById(classId);
+		byte[] picturebyte = cBean.getClassPicture1();
+		InputStream is = new ByteArrayInputStream(picturebyte);
 		
-		InputStream in = request.getServletContext().getResourceAsStream("/WEB-INF/sixteam/t6_21/images/"+classPictureName);
-		return IOUtils.toByteArray(in);
+		return IOUtils.toByteArray(is);
+		
 	}
 	
-//	@DeleteMapping("/t6_21deleteClass.controller/{classId}") 
-//	@ResponseBody
-//	public String processDeleteAction(@PathVariable("classId") int classId) {
-//		
-//	}
-
 }
 

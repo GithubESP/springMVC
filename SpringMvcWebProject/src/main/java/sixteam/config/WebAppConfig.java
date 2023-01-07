@@ -37,19 +37,19 @@ public class WebAppConfig implements WebMvcConfigurer {
 		return irvr;
 	}
 
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/resources/images/");
-		registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/resources/css/");
-	}
-	
-
-	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addRedirectViewController("/", "membersmain.controller");
-		registry.addViewController("/funny.action").setViewName("form");
-
-	}
+//	@Override
+//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//		registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/resources/images/");
+//		registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/resources/css/");
+//	}
+//	
+//
+//	@Override
+//	public void addViewControllers(ViewControllerRegistry registry) {
+//		registry.addRedirectViewController("/", "membersmain.controller");
+//		registry.addViewController("/funny.action").setViewName("form");
+//
+//	}
 	@Bean
 	public CommonsMultipartResolver multipartResolver() {
 		CommonsMultipartResolver cmr = new CommonsMultipartResolver();
