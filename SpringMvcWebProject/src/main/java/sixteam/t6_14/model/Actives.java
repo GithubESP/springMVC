@@ -18,7 +18,7 @@ public class Actives {
 	
 	private String activeName;
 	
-	private byte[] activeImg;
+	private Blob activeImg;
 	
 	private String activeDescription;
 	
@@ -110,7 +110,7 @@ public class Actives {
 
 
 
-	public byte[] getActiveImg() {
+	public Blob getActiveImg() {
 		return activeImg;
 	}
 
@@ -118,7 +118,7 @@ public class Actives {
 
 
 
-	public void setActiveImg(byte[] activeImg) {
+	public void setActiveImg(Blob activeImg) {
 		this.activeImg = activeImg;
 	}
 
