@@ -133,9 +133,8 @@ public class PeopleCRUDController {
 	public byte[] processButeArrayImageAction(@RequestParam("id") Integer id, HttpServletRequest request) throws IOException {
 		PeopleBean_23 bean = pService.selectById(id);
 		String images = bean.getImages();
-		System.out.println("id"+id+" id2 "+bean.getUserID()+" images= " + images);
 //		InputStream in = request.getServletContext().getResourceAsStream(images);
-		InputStream in = request.getServletContext().getResourceAsStream("/WEB-INF/resources/images/images06.jpg");
+		InputStream in = request.getServletContext().getResourceAsStream("/WEB-INF/resources/images/t6_23/"+images);
 		return IOUtils.toByteArray(in);
 	}
 	
@@ -147,12 +146,12 @@ public class PeopleCRUDController {
 	@PostMapping("/processpeople.controller")
 	public String InsertPeopleController(HttpServletRequest request,@RequestParam("userId") Integer userid, @RequestParam("name") String name, @RequestParam("age") Integer age,@RequestParam("photo") MultipartFile mf,
 			@RequestParam("gender") String sex, @RequestParam("address") String address, @RequestParam("star_sign") String star, @RequestParam("profession") String profession,
-			@RequestParam("religion") String religion, @RequestParam("income") @Nullable Double income, @RequestParam("sex_in") String sex_in, @RequestParam("hobby") String hobby,
+			@RequestParam("religion") String religion, @RequestParam("income") @Nullable Double income, @RequestParam("sex_in") @Nullable String sex_in, @RequestParam("hobby") String hobby,
 			@RequestParam("dream") String dream, @RequestParam("personality") String personality, @RequestParam("emotion") String emotion, @RequestParam("introduction") String introduction, Model m) throws IOException, ServletException, SQLException {
 		
-		String saveFileDir ="c:/temp/people_photo";
+		String saveFileDir ="c:/gitapp/git_t6_02/SpringMvcWebProject/src/main/webapp/WEB-INF/resources/images/t6_23";
+		String filePath = String.valueOf(userid)+".jpg";
 		File saveFilePath = new File(saveFileDir,String.valueOf(userid)+".jpg");
-		String filePath = String.valueOf(saveFilePath);
 		mf.transferTo(saveFilePath);
 		
 		PeopleBean_23 pb = new PeopleBean_23();
@@ -182,15 +181,19 @@ public class PeopleCRUDController {
 	@PostMapping("/updatePeopleControllersafe")
 	public String UpdatePeopleController(HttpServletRequest request,@RequestParam("userId") Integer userid, @RequestParam("name") String name, @RequestParam("age") Integer age,@RequestParam("photo") MultipartFile mf,
 			@RequestParam("address") String address, @RequestParam("star_sign") String star, @RequestParam("profession") String profession,
-			@RequestParam("religion") String religion, @RequestParam("income") @Nullable Double income, @RequestParam("sex_in") String sex_in, @RequestParam("hobby") String hobby,
+			@RequestParam("religion") String religion, @RequestParam("income") @Nullable Double income, @RequestParam("sex_in") @Nullable String sex_in, @RequestParam("hobby") String hobby,
 			@RequestParam("dream") String dream, @RequestParam("personality") String personality, @RequestParam("emotion") String emotion, @RequestParam("introduction") String introduction, Model m) throws IllegalStateException, IOException  {
-		
-		String saveFileDir ="c:/temp/people_photo";
-		File saveFilePath = new File(saveFileDir,String.valueOf(userid)+".jpg");
-		String filePath = String.valueOf(saveFilePath);
-		mf.transferTo(saveFilePath);
-		
 		PeopleBean_23 pb = new PeopleBean_23();
+		String fileName = mf.getOriginalFilename();
+		System.out.println("---------------------------------");
+		System.out.println("fileName: "+fileName);
+		if(!fileName.equals("")) {
+		String saveFileDir ="c:/gitapp/git_t6_02/SpringMvcWebProject/src/main/webapp/WEB-INF/resources/images/t6_23";
+		String filePath = String.valueOf(userid)+"2.jpg";
+		File saveFilePath = new File(saveFileDir,String.valueOf(userid)+"2.jpg");
+		mf.transferTo(saveFilePath);
+		pb.setImages(filePath);
+		}
 		
 		pb.setUserID(userid);
 		pb.setName(name);
@@ -206,15 +209,8 @@ public class PeopleCRUDController {
 		pb.setReligion(religion);
 		pb.setSex_in(sex_in);
 		pb.setIncome(income);
-		pb.setImages(filePath);
 
 		pService.update(pb);
-		
-		
-		
-		
-		
-		
 		
 		
 		List<PeopleBean_23> beans = pService.selectAll();

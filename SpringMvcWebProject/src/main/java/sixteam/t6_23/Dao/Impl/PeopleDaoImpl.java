@@ -81,7 +81,7 @@ public class PeopleDaoImpl implements PeopleDao_23 {
 			peoBean.setReligion(bean.getReligion());
 			peoBean.setSex_in(bean.getSex_in());
 			peoBean.setIncome(bean.getIncome());
-			
+			session.flush();
 			session.close();
 			
 		return peoBean;
