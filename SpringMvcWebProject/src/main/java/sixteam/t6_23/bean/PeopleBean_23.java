@@ -1,7 +1,5 @@
 package sixteam.t6_23.bean;
 
-import java.sql.Blob;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 
 @Entity
-@Table(name = "member_23")
+@Table(name = "people_23")
 @Component
 public class PeopleBean_23 {
 	
@@ -53,7 +51,7 @@ public class PeopleBean_23 {
 	private String Introduction;//自介
 	
 	@Column(name = "person_img")
-	private String Images;//照片v
+	private byte[] Images;//照片v
 	
 	@Column(name = "religion")
 	private String Religion;//宗教v
@@ -125,10 +123,10 @@ public class PeopleBean_23 {
 	public void setIntroduction(String introduction) {
 		Introduction = introduction;
 	}
-	public String getImages() {
+	public byte[] getImages() {
 		return Images;
 	}
-	public void setImages(String images) {
+	public void setImages(byte[] images) {
 		Images = images;
 	}
 	
@@ -167,7 +165,7 @@ public class PeopleBean_23 {
 		
 	}
 	public PeopleBean_23(Integer userID, String name, Integer age, String sex, String address, String star, String emotion,
-			String profession, String personality, String hobby, String dream, String introduction, String images,
+			String profession, String personality, String hobby, String dream, String introduction, byte[] images,
 			String religion, String sex_in, Double income) {
 		super();
 		this.userID = userID;
@@ -226,7 +224,7 @@ public class PeopleBean_23 {
 		return builder.toString();
 	}
 	public PeopleBean_23(String name, Integer age, String sex, String address, String star, String emotion,
-			String profession, String personality, String hobby, String dream, String introduction, String images,
+			String profession, String personality, String hobby, String dream, String introduction,byte[] images,
 			String religion, Double income) {
 		super();
 		Name = name;
@@ -253,7 +251,7 @@ public class PeopleBean_23 {
 		Address = address;
 	}
 	public PeopleBean_23(String name, Integer age, String sex, String address, String star, String emotion,
-			String profession, String personality, String hobby, String dream, String introduction, String images,
+			String profession, String personality, String hobby, String dream, String introduction, byte[] images,
 			String religion, String sex_in, Double income) {
 		super();
 		Name = name;
@@ -274,7 +272,7 @@ public class PeopleBean_23 {
 	}
 	public PeopleBean_23(Integer userID, String name, Integer age, String sex, String address, String star,
 			String emotion, String profession, String personality, String hobby, String dream, String introduction,
-			String images, String religion, String sex_in) {
+			byte[] images, String religion, String sex_in) {
 		super();
 		this.userID = userID;
 		Name = name;

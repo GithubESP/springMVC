@@ -31,11 +31,11 @@ public class UploadFileController {
 		File saveFilePath = new File(saveFileDir,fileName);
 		System.out.println(saveFilePath);
 		mf.transferTo(saveFilePath);
-//		byte[] b = mf.getBytes();
-//		if(fileName != null && fileName.length()!=0) {
-//			
-//			savePicture(fileName,b);
-//		}
+		byte[] b = mf.getBytes();
+		if(fileName != null && fileName.length()!=0) {
+			
+			savePicture(fileName,b);
+		}
 		
 		return "saveFilePath:" + saveFilePath;
 	}

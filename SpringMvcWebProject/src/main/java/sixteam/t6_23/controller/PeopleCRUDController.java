@@ -1,5 +1,6 @@
 package sixteam.t6_23.controller;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -96,45 +97,13 @@ public class PeopleCRUDController {
 		return "t6_23/ShowPeople";
 	}
 	
-//	@GetMapping(path = "/toImages", produces = "text/plain;chartset=UTF-8")
-//	@ResponseBody
-//	public void processButeArrayImageAction(@RequestParam("id") Integer id, HttpServletResponse res) throws IOException {
-//		PeopleBean_23 bean = pService.selectById(id);
-//		OutputStream os = null;
-//		  InputStream is = null;
-//		  Blob blob = null;
-//		  try {
-//			   if (bean != null) {
-//			    blob = bean.getImages();
-//			    if (blob != null) {
-//			     is = blob.getBinaryStream();
-//			    }
-//			   }
-//			   // 設定輸出資料的MIME型態
-//			   res.setContentType("jpg/png");
-//			   // 取得能寫出非文字資料的OutputStream物件
-//			   os = res.getOutputStream(); 
-//			   // 由InputStream讀取位元組，然後由OutputStream寫出
-//			   int len = 0;
-//			   byte[] bytes = new byte[8192];
-//			   while ((len = is.read(bytes)) != -1) {
-//			    os.write(bytes, 0, len);
-//			   }
-//			  } catch (SQLException e) {
-//			   e.printStackTrace();
-//			  } finally{
-//			   if (is != null) is.close();
-//			   if (os != null) os.close();
-//			  }
-//	}
-	
 	@GetMapping(path = "/toImages", produces = "text/plain;charset=UTF-8")
 	@ResponseBody
 	public byte[] processButeArrayImageAction(@RequestParam("id") Integer id, HttpServletRequest request) throws IOException {
 		PeopleBean_23 bean = pService.selectById(id);
-		String images = bean.getImages();
-//		InputStream in = request.getServletContext().getResourceAsStream(images);
-		InputStream in = request.getServletContext().getResourceAsStream("/WEB-INF/resources/images/t6_23/"+images);
+		byte[] images = bean.getImages();
+		ByteArrayInputStream in = new ByteArrayInputStream(images);
+//		InputStream in = request.getServletContext().getResourceAsStream("/WEB-INF/resources/images/t6_23/"+images);
 		return IOUtils.toByteArray(in);
 	}
 	
@@ -149,12 +118,17 @@ public class PeopleCRUDController {
 			@RequestParam("religion") String religion, @RequestParam("income") @Nullable Double income, @RequestParam("sex_in") @Nullable String sex_in, @RequestParam("hobby") String hobby,
 			@RequestParam("dream") String dream, @RequestParam("personality") String personality, @RequestParam("emotion") String emotion, @RequestParam("introduction") String introduction, Model m) throws IOException, ServletException, SQLException {
 		PeopleBean_23 pb = new PeopleBean_23();
+		String fileName = mf.getOriginalFilename();
+//		String saveFileDir ="c:/gitapp/git_t6_02/SpringMvcWebProject/src/main/webapp/WEB-INF/resources/images/t6_23";
+//		String filePath = String.valueOf(userid)+".jpg";
+//		File saveFilePath = new File(saveFileDir,String.valueOf(userid)+".jpg");
+//		mf.transferTo(saveFilePath);
+//		pb.setImages(filePath);
 		
-		String saveFileDir ="c:/gitapp/git_t6_02/SpringMvcWebProject/src/main/webapp/WEB-INF/resources/images/t6_23";
-		String filePath = String.valueOf(userid)+".jpg";
-		File saveFilePath = new File(saveFileDir,String.valueOf(userid)+".jpg");
-		mf.transferTo(saveFilePath);
-		pb.setImages(filePath);
+		byte[] b = mf.getBytes();
+		if(fileName != null && fileName.length()!=0) {
+		pb.setImages(b);
+		}
 		
 		pb.setUserID(userid);
 		pb.setName(name);
@@ -186,17 +160,22 @@ public class PeopleCRUDController {
 		PeopleBean_23 pb = new PeopleBean_23();
 		PeopleBean_23 bean = pService.selectById(userid);
 		String fileName = mf.getOriginalFilename();
-		System.out.println("---------------------------------");
-		System.out.println("fileName: \""+fileName+"\"");
-		if(!fileName.equals("")) {
-			System.out.println("hgfehuldlafvkhanhn" + !fileName.equals(""));
-		String saveFileDir ="c:/gitapp/git_t6_02/SpringMvcWebProject/src/main/webapp/WEB-INF/resources/images/t6_23";
-		String filePath = String.valueOf(userid)+".jpg";
-		File saveFilePath = new File(saveFileDir,String.valueOf(userid)+".jpg");
-		mf.transferTo(saveFilePath);
-		pb.setImages(filePath);
+//		String fileName = mf.getOriginalFilename();
+//		if(!fileName.equals("")) {
+//			System.out.println("hgfehuldlafvkhanhn" + !fileName.equals(""));
+//		String saveFileDir ="c:/gitapp/git_t6_02/SpringMvcWebProject/src/main/webapp/WEB-INF/resources/images/t6_23";
+//		String filePath = String.valueOf(userid)+".jpg";
+//		File saveFilePath = new File(saveFileDir,String.valueOf(userid)+".jpg");
+//		mf.transferTo(saveFilePath);
+//		pb.setImages(filePath);
+//		}else {
+//			pb.setImages(bean.getImages());
+//		}
+		byte[] b = mf.getBytes();
+		
+		if(fileName != null && fileName.length()!=0) {
+			pb.setImages(b);
 		}else {
-			System.out.println("hgfehuldlafvkhanhn" + !fileName.equals(""));
 			pb.setImages(bean.getImages());
 		}
 		
