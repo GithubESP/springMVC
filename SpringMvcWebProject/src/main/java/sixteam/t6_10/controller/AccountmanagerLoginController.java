@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import sixteam.t6_10.model.AccountManager;
 import sixteam.t6_10.model.AccountManagerService;
 
-//@WebServlet("/accountLogin")
 @Controller
 public class AccountmanagerLoginController {
 
@@ -46,21 +45,12 @@ public class AccountmanagerLoginController {
 		boolean status = aService.checkLogin(new AccountManager(user, pwd));
 		
 		if(status) {
-//			m.addAttribute("user", user);
-//			m.addAttribute("pwd", pwd);
 			System.out.println("=========Success===========");
 			return "redirect:showAllAccountControllersafe";
 		}
 		
 		errors.put("msg", "請輸入正確的帳號或密碼");		
 		return "loginSystem";
-//		if(manager!=null) {
-//			HttpSession session=req.getSession();
-//			session.setAttribute("manager", manager);
-//			resp.sendRedirect(req.getContextPath()+"/showAllAccountControllersafe");
-//		}else {
-//			resp.sendRedirect(req.getContextPath()+"/t6_10/accountLogin.html"); // 如果是空返回原畫面
-//		}
 			
 		}
 	}

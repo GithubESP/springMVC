@@ -43,10 +43,11 @@ public class AccountDao {
 	// Finish
 	public Account update(Account account) {
 		Session session = factory.openSession();
-
+System.out.println("修改物件");
 		if (account != null) {
 			session.update(account);
 			session.flush();
+			System.out.println("修改物件 成功");
 		}
 		session.close();
 		return account;
@@ -66,8 +67,10 @@ public class AccountDao {
 
 		if (account != null) {
 			session.save(account);
+			session.flush();
+			System.out.println("Dao 新增物件有值");
 		}
-
+			System.out.println("Dao 新增物件完成(確認上方有無值的訊息");
 		session.close();
 		return account;
 	}

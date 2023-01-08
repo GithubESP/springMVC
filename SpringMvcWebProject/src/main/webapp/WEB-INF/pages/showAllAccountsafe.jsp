@@ -56,8 +56,8 @@
                     <td><img height='100' width='80' src="<c:url value='/t6_10_img.controller/${bean.id}' />">
                     </td>
 <!--                     <td><a class="fa-regular fa-trash-can" href=${request.getContextPath()}removeAccountControllersafe?id=${bean.id}>刪除</a></td> -->
-                    <td><a class="fa-solid fa-screwdriver-wrench" href=${request.getContextPath()}showAccountControllersafe?id=${bean.id}>修改</a>&nbsp
-                    <a class="fa-solid fa-trash-can" href=${request.getContextPath()}removeAccountControllersafe?id=${bean.id}>刪除</a></td>
+                    <td><a class="fa-solid fa-screwdriver-wrench" href=showAccountControllersafe/${bean.id}>修改</a>&nbsp
+                    <a class="fa-solid fa-trash-can" href=removeAccountControllersafe/${bean.id}>刪除</a></td>
                 </tr>
             </c:forEach>
         </tbody>
