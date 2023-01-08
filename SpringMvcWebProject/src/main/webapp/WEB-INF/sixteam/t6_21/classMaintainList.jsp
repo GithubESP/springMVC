@@ -65,7 +65,7 @@
      				<td>
 					<div style="display:inline">
            <a href="t6_21deleteClass.controller/${bean.classId}"><input type="submit" value="刪除"></a>
-           <a href="t6_21updateClass.controller"><input type="button" value="修改"></a>
+           <a href="t6_21preupdateClass.controller/${bean.classId}"><input type="button" value="修改"></a>
 				</div>
 				</tr>
      				

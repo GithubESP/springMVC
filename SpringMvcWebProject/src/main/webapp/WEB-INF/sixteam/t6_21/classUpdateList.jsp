@@ -20,24 +20,8 @@
     <body class="sb-nav-fixed">
     <div>
     	<jsp:include page="/background_index/index-backToMVC.jsp" /></div>
-		<c:choose>
-			<c:when test="${ !empty param.classId}">
-				<c:set var="name" value='${bean.className}' />
-				<c:set var="uploadFile" value='${bean.classPicture1}' />
-				<c:set var="teacher" value='${bean.classTeacherName}' />
-			</c:when>
+		
 
-
-			<c:otherwise>
-				<c:set var="name" value='${bean.className}' />
-				<c:set var="uploadFile" value='${bean.classPicture1}' />
-				<c:set var="teacher" value='${bean.classTeacherName}' />
-			</c:otherwise>
-
-		</c:choose>
-
-	<form action="t6_21updateClass.controller/${bean.classId}" method="POST"
-		enctype="multipart/form-data">
 
             <div id="layoutSidenav_content" style="margin-left: 250px">
                 <main>
@@ -60,6 +44,8 @@
 <!--                                 DataTable Example -->
                             </div>
                             <div class="card-body">
+	<form action="<c:url value='/updateClass.controller'/>" method="post"
+		enctype="multipart/form-data">
                                 <table id="datatablesSimple">
 								<thead>
 									<tr>
@@ -73,24 +59,24 @@
 								<tbody>
 									<tr>
 
-										<th><input type="text" id="id" name="id" value="${bean.classId}" readonly/></th>
-										<td><input type="text" id="name" name="name" value="${bean.className}"/></td>
-										<td><input type="file" id="uploadFile" name="uploadFile" value="${bean.classPicture1}"/></td>
-										<td><input type="text" id="teacher" name="teacher" value="${bean.classTeacherName}"/></td>
+										<th><input type="text"  name="classId" value="${bean.classId}" readonly/></th>
+										<td><input type="text" name="className" value="${bean.className}"/></td>
+										<td><input type="file" name="classPicture1" value="${bean.classPicture1}"/></td>
+										<td><input type="text" name="classTeacherName" value="${bean.classTeacherName}"/></td>
 
 
 										<td>
-										    <button type="submit" value="upload">確認</button></td>
+										    <input type="submit" value="確認"/></td>
 
 									</tr>
 								</tbody>
 							</table>
+						</form>
 						</div>
 					</div>
 				</div>
 			</main>
 		</div>
-						</form>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../background_index/js/scripts.js"></script>

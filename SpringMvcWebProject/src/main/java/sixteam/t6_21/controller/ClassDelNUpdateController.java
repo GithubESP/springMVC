@@ -2,6 +2,7 @@ package sixteam.t6_21.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,42 +36,45 @@ public class ClassDelNUpdateController {
 	}
 	
 	@GetMapping("/t6_21preupdateClass.controller/{classId}")
-	public String processMainAction(@PathVariable("classId") int classId,Model m) {
+	public String processMainAction(@PathVariable("classId") int classId, Model m) {
 		ClassBean cBean = classService.findById(classId);
-		m.addAttribute("classBean",cBean);
-		System.out.println(cBean);
+		m.addAttribute("bean", cBean);
 		return "t6_21/classUpdateList";
-
 	}
-	
-	@PostMapping("/t6_21updateClass.controller")
-	public String processUpdateAction(@RequestParam("id") int classId,@RequestParam("name") String name, @RequestParam("uploadFile") MultipartFile mf, 
-            @RequestParam("teacher") String teacher,Model m) throws IOException {
-		
+
+	@PostMapping("/updateClass.controller")
+	public String processUpdateAction(@RequestParam("classId") int classId, @RequestParam("className") String name,
+			@RequestParam("classPicture1") MultipartFile mf, @RequestParam("classTeacherName") String teacher, Model m)
+			throws IOException {
+		System.out.println("-------------------");
 		String fileName = mf.getOriginalFilename();
 		byte[] b = mf.getBytes();
-		
-		ClassBean cBean = classService.findById(classId);
-		if(fileName != null && fileName.length()!=0) {
-			cBean.setClassName(name);
-			cBean.setClassPicture1(b);
-			cBean.setClassPictureName(fileName);
-			cBean.setClassTeacherName(teacher);
-			classService.update(cBean);
-			}else {
-				cBean.setClassName(name);
-				cBean.setClassTeacherName(teacher);
-				updateClass(name,teacher);
-			}
-		
-		return "t6_21/classUpdateList";
+		ClassBean cbBean = new ClassBean();
+//		ClassBean cBean = classService.findById(classId);
+		if (fileName != null && fileName.length() != 0) {
+			cbBean.setClassId(classId);
+			cbBean.setClassName(name);
+			cbBean.setClassPicture1(b);
+			cbBean.setClassPictureName(fileName);
+			cbBean.setClassTeacherName(teacher);
+			classService.update(cbBean);
+//			}else {
+//				cbBean.setClassName(name);
+//				cbBean.setClassTeacherName(teacher);
+//				updateClass(name,teacher);
+		}
+
+		List<ClassBean> classlist = classService.selectAll();
+		m.addAttribute("classList", classlist);
+		return "t6_21/classMaintainList";
 
 	}
-	private void updateClass(String className,String teacherName) {
-		ClassBean cBean = new ClassBean();
-		cBean.setClassName(className);
-		cBean.setClassTeacherName(teacherName);
-		classService.update(cBean);
+//	private void updateClass(String className,String teacherName) {
+//		ClassBean cBean = new ClassBean();
+//		cBean.setClassName(className);
+//		cBean.setClassTeacherName(teacherName);
+//		classService.update(cBean);
+//
+//	}
 
-	}
 }
