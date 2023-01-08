@@ -26,8 +26,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import sixteam.t6_14.model.Actives;
 import sixteam.t6_14.service.ActiveService;
-
-@Controller
+@RestController
+//@Controller
 @RequestMapping("/actives")
 public class ActiveController {
 //	@Autowired
@@ -52,11 +52,11 @@ public class ActiveController {
 //		return result;
 //
 //	}
-//@GetMapping
-//	public List<Actives> findAll() {
-//		List<Actives> active = activeService.findAll();
-//		return active;
-//	}
+@GetMapping
+	public List<Actives> findAll() {
+		List<Actives> active = activeService.findAll();
+		return active;
+	}
 //@GetMapping("/{id}")
 //	public Actives findById(@PathVariable Integer id) {
 //		Actives active = activeService.findById(id);
@@ -84,13 +84,13 @@ public String update(@ModelAttribute Actives active) {
 	return "t6_14/jsp/actives";
 	
 }
-@GetMapping
-public ModelAndView findAll(Model model) {
-	List<Actives> actives = activeService.findAll();
-	model.addAttribute("actives",actives);
-	ModelAndView mav = new ModelAndView();
-	mav.setViewName("t6_14/mainactive");
-	return mav;
+//@GetMapping
+//public ModelAndView findAll(Model model) {
+//	List<Actives> actives = activeService.findAll();
+//	model.addAttribute("actives",actives);
+//	ModelAndView mav = new ModelAndView();
+//	mav.setViewName("t6_14/mainactive");
+//	return mav;
 	
 	
 	
@@ -123,7 +123,7 @@ public ModelAndView findAll(Model model) {
 	
 	
 //	return "t6_14/jsp/actives";
-}
+//}
 //@GetMapping("/{id}")
 //public String findById(@PathVariable Integer id) {
 //	Actives active = activeService.findById(id);
