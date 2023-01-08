@@ -68,7 +68,7 @@
      				<td>${act.activeHost}</td>
      				<td>
 					<div style="display:inline">
-           <a href="actives/${act.activeID}"><input type="submit" value="刪除"></a>
+           <a href="actives/${act.activeID}"><input type="submit" value="刪除" ></a>
            <a href="actives/updateView/${act.activeID}"><input type="button" value="修改"></a>
 				</div>
 				</tr>

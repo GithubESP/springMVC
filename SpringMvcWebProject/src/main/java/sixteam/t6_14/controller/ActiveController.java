@@ -46,29 +46,30 @@ public class ActiveController {
 @Autowired
 private ActiveService activeService;
 
-@PostMapping("/add")
-public ModelAndView save(@RequestParam("name") String name,@RequestParam("img") byte[] img,@RequestParam("description") String description
+@PostMapping
+public ModelAndView save(@RequestParam("name") String name,@RequestParam("img") MultipartFile mf,@RequestParam("description") String description
 ,@RequestParam("start") Date start,@RequestParam("end") Date end,@RequestParam("location") String location,@RequestParam("host") String host
-,ModelAndView mav,MultipartFile mf)  {
+,ModelAndView mav) throws IOException  {
 	System.out.println("------------");
 	String fileName = mf.getOriginalFilename();
 
-	try {
+
 		byte[] b = mf.getBytes();
-	} catch (IOException e) {
-		System.out.println("有問題");
-		e.printStackTrace();
-	}
-	
-	if (fileName != null && fileName.length() != 0) {
-		Actives actives=new Actives(name,img,description,start,end,location,host);
+		if (fileName != null && fileName.length() != 0) {
+		Actives actives=new Actives(name,b,description,start,end,location,host);
 		System.out.println(actives);
-		activeService.save(actives);
-	}
-	mav.setViewName("redict:/t6_14/mainactive");
+		activeService.save(actives);}
+		mav.setViewName("redirect:/actives");
 	return mav;
 	
-}
+		
+	
+	}
+	
+	
+	
+	
+
 @DeleteMapping("/{id}")
 public String delete(@PathVariable Integer id) {
 	
