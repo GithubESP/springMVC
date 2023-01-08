@@ -19,9 +19,9 @@ public class AccountmanagerLoginController {
 	@Autowired
 	private AccountManagerService aService;
 	
-	@RequestMapping(path = "/loginsystemmain.controller", method = RequestMethod.GET)
+	@RequestMapping(path = "/adminLogin.controller", method = RequestMethod.GET)
 	public String processMainAction() {
-		return "loginSystem";
+		return "t6_10/adminLogin";
 	}
 	
 	@RequestMapping(path = "/checklogin.controller", method = RequestMethod.POST)
@@ -39,18 +39,18 @@ public class AccountmanagerLoginController {
 		}
 		
 		if(errors!=null && !errors.isEmpty()) {
-			return "loginSystem";
+			return "t6_10/adminLogin";
 		}
 		
 		boolean status = aService.checkLogin(new AccountManager(user, pwd));
 		
 		if(status) {
 			System.out.println("=========Success===========");
-			return "redirect:showAllAccountControllersafe";
+			return "redirect:t6_10_showAll.controller";
 		}
 		
 		errors.put("msg", "請輸入正確的帳號或密碼");		
-		return "loginSystem";
+		return "t6_10/adminLogin";
 			
 		}
 	}

@@ -1,10 +1,13 @@
 package sixteam.t6_10.model;
 
+import java.sql.Blob;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import sixteam.t6_10.model.Account;
 
 @Service
 @Transactional
@@ -31,5 +34,9 @@ public class AccountService{
 
 	public Account add(Account account) {
 		return accountDao.add(account);
+	}
+	
+	public Account add(Integer id, String account, String password, Blob image) {
+		return accountDao.add(new Account(id, account, password, image));
 	}
 }
