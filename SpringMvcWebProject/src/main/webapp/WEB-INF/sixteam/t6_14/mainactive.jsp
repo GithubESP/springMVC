@@ -10,9 +10,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>後臺管理系統</title>
-        <link href="../background_index/css/index_backgroundOnly.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/background_index/css/index_backgroundOnly.css" rel="stylesheet" />
         
-        <link href="../background_index/css/styles.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/background_index/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     
@@ -60,7 +60,7 @@
 				<tr>
 					<td>${act.activeID}</td>
 					<td>${act.activeName}</td>
-					<td><img height='100' width='80'src="'data:image/jpeg;base64',+'http://localhost:8080/Spring/actives/toImg/${act.activeID}'"></td>
+					<td><img height='100' width='80'src="actives/toImg/${act.activeID}"></td>
 					<td>${act.activeDescription}</td>
      				<td>${act.activeStartDate}</td>
      				<td>${act.activeEndDate}</td>
@@ -68,15 +68,15 @@
      				<td>${act.activeHost}</td>
      				<td>
 					<div style="display:inline">
-           <a href="t6_21deleteClass.controller/${bean.classId}"><input type="submit" value="刪除"></a>
-           <a href="t6_21updateClass.controller"><input type="button" value="修改"></a>
+           <a href="actives/${act.activeID}"><input type="submit" value="刪除"></a>
+           <a href="actives/updateView/${act.activeID}"><input type="button" value="修改"></a>
 				</div>
 				</tr>
      				
 			</c:forEach>
 		</tbody>
                                 </table>
-					<div><form action="t6_21insertClass.controller"><input type="submit" value="新增紀錄"></form></div>
+					<div><form action="actives/addView"><input type="submit" value="新增紀錄"></form></div>
                             </div>
                         </div>
                     </div>
@@ -89,12 +89,12 @@
            
  
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../background_index/js/scripts.js"></script>
+        <script src="${pageContext.request.contextPath}/background_index/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="../background_index/assets/demo/chart-area-demo.js"></script>
-        <script src="../background_index/assets/demo/chart-bar-demo.js"></script>
+        <script src="${pageContext.request.contextPath}/background_index/assets/demo/chart-area-demo.js"></script>
+        <script src="${pageContext.request.contextPath}/background_index/assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="../background_index/js/datatables-simple-demo.js"></script>
+        <script src="${pageContext.request.contextPath}/background_index/js/datatables-simple-demo.js"></script>
         
         
         

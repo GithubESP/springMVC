@@ -26,6 +26,23 @@ public class Actives {
 
 
 
+	public Actives(Integer activeID, String activeName, byte[] activeImg, String activeDescription,
+			Date activeStartDate, Date activeEndDate, String activeLocation, String activeHost) {
+		super();
+		this.activeID = activeID;
+		this.activeName = activeName;
+		this.activeImg = activeImg;
+		this.activeDescription = activeDescription;
+		this.activeStartDate = activeStartDate;
+		this.activeEndDate = activeEndDate;
+		this.activeLocation = activeLocation;
+		this.activeHost = activeHost;
+	}
+
+
+
+
+
 	private Date activeStartDate;
 	private Date activeEndDate;
 	
@@ -33,6 +50,20 @@ public class Actives {
 	private String activeHost;
 	
 	
+	public Actives(String activeName, byte[] activeImg, String activeDescription, Date activeStartDate,
+			Date activeEndDate, String activeLocation, String activeHost) {
+		super();
+		this.activeName = activeName;
+		this.activeImg = activeImg;
+		this.activeDescription = activeDescription;
+		this.activeStartDate = activeStartDate;
+		this.activeEndDate = activeEndDate;
+		this.activeLocation = activeLocation;
+		this.activeHost = activeHost;
+	}
+
+
+
 	public Actives(String activeName, String activeDescription, Date activeStartDate, Date activeEndDate,
 			String activeLocation, String activeHost) {
 		super();

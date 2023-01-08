@@ -11,10 +11,13 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>後臺管理系統</title>
-<link href="../background_index/css/index_backgroundOnly.css"
+<link
+	href="${pageContext.request.contextPath}/background_index/css/index_backgroundOnly.css"
 	rel="stylesheet" />
 
-<link href="../background_index/css/styles.css" rel="stylesheet" />
+<link
+	href="${pageContext.request.contextPath}/background_index/css/styles.css"
+	rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
 	crossorigin="anonymous"></script>
 </head>
@@ -25,7 +28,7 @@
 		<jsp:include page="/background_index/index-backToMVC.jsp" /></div>
 
 	<form id="form1" name="form1" method="post"
-		action="insertClass.controller" enctype="multipart/form-data">
+		action=http://localhost:8080/Spring/add" enctype="multipart/form-data">
 
 		<div id="layoutSidenav_content" style="margin-left: 250px">
 			<main>
@@ -42,21 +45,26 @@
 							<table id="datatablesSimple">
 								<thead>
 									<tr>
-										<!-- 				<th>課程編號</th> -->
-										<th>課程名稱</th>
-										<th>課程圖片</th>
-										<th>課程老師</th>
-										<!-- 				<th>課程價錢</th> -->
-										<!-- 				<th>課程分類</th> -->
-										<!-- 				<th>購物車</th> -->
-										<th></th>
+										<th>活動名稱</th>
+										<th>活動圖片</th>
+										<th>活動描述</th>
+										<th>活動開始時間</th>
+										<th>活動結束時間</th>
+										<th>活動地點</th>
+										<th>活動主辦單位</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td><input type="text" name="name"/></td>
-										<td><input type="file" name="uploadFile"/></td>
-										<td><input type="text" name="teacher"/></td>
+										<td><input type="text" name="name" required="required" /></td>
+										<td><input type="file" name="img" required="required" /></td>
+										<td><input type="textarea" cols="30" rows="20"
+											name="description" required="required" /></td>
+										<td><input type="date" name="start" required="required" /></td>
+										<td><input type="date" name="end" required="required" /></td>
+										<td><input type="text" name="location"
+											required="required" /></td>
+										<td><input type="text" name="host" required="required" /></td>
 										<td><button type="submit" value="upload">確認</button></td>
 									</tr>
 								</tbody>
@@ -71,15 +79,19 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		crossorigin="anonymous"></script>
-	<script src="../background_index/js/scripts.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/background_index/js/scripts.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
 		crossorigin="anonymous"></script>
-	<script src="../background_index/assets/demo/chart-area-demo.js"></script>
-	<script src="../background_index/assets/demo/chart-bar-demo.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/background_index/assets/demo/chart-area-demo.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/background_index/assets/demo/chart-bar-demo.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
 		crossorigin="anonymous"></script>
-	<script src="../background_index/js/datatables-simple-demo.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/background_index/js/datatables-simple-demo.js"></script>
 
 
 </body>
