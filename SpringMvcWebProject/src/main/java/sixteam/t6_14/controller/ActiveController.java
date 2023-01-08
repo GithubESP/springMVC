@@ -5,11 +5,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.Base64;
 import java.util.List;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.sql.rowset.serial.SerialBlob;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,13 +23,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import sixteam.t6_14.model.Actives;
 import sixteam.t6_14.service.ActiveService;
-@RestController
-//@Controller
+//@RestController
+@Controller
 @RequestMapping("/actives")
 public class ActiveController {
 //	@Autowired
@@ -52,11 +55,11 @@ public class ActiveController {
 //		return result;
 //
 //	}
-@GetMapping
-	public List<Actives> findAll() {
-		List<Actives> active = activeService.findAll();
-		return active;
-	}
+//@GetMapping
+//	public List<Actives> findAll() {
+//		List<Actives> active = activeService.findAll();
+//		return active;
+//	}
 //@GetMapping("/{id}")
 //	public Actives findById(@PathVariable Integer id) {
 //		Actives active = activeService.findById(id);
@@ -84,14 +87,24 @@ public String update(@ModelAttribute Actives active) {
 	return "t6_14/jsp/actives";
 	
 }
-//@GetMapping
-//public ModelAndView findAll(Model model) {
-//	List<Actives> actives = activeService.findAll();
-//	model.addAttribute("actives",actives);
-//	ModelAndView mav = new ModelAndView();
-//	mav.setViewName("t6_14/mainactive");
-//	return mav;
-	
+@GetMapping
+public ModelAndView findAll(Model model) {
+	List<Actives> actives = activeService.findAll();
+	model.addAttribute("actives",actives);
+	ModelAndView mav = new ModelAndView();
+	mav.setViewName("t6_14/mainactive");
+	return mav;
+}
+
+@RequestMapping("/toImg/{activeID}")
+@ResponseBody
+public String toImg(@PathVariable Integer activeID) {
+	Actives actives= activeService.findById(activeID);
+	byte[] img=actives.getActiveImg();
+	String imageBase64 = Base64.getEncoder().encodeToString(img);
+	System.out.println(imageBase64);
+	return imageBase64;
+}
 	
 	
 //	@PostMapping("/insertClass.controller")
