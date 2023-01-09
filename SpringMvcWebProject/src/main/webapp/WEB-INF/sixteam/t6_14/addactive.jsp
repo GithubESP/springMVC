@@ -28,7 +28,7 @@
 		<jsp:include page="/background_index/index-backToMVC.jsp" /></div>
 
 	<form id="form1" name="form1" method="post"
-		action=http://localhost:8080/Spring/actives enctype="multipart/form-data">
+		action=http://localhost:8080/SpringMvcWebProject/actives enctype="multipart/form-data">
 
 		<div id="layoutSidenav_content" style="margin-left: 250px">
 			<main>
