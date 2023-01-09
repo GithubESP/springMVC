@@ -1,0 +1,49 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>管理者登入頁面</title>
+</head>
+<!-- 	 action="/Hibernate_web_teacher/accountLogin2" method="post"-->
+<body>
+	<form id="loginForm"  action="/Hibernate_web_teacher/accountLogin" method="post">
+		帳號:<input type="text" id="username" name="username" /><br /> 密碼:<input type="password" id="password"
+			name="password" /><br />
+		<!--       <p>${errorMsgMap.LoginError}</p> -->
+		<input type="submit" value="登錄" id="loginSend" />
+	</form>
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+<!--	<script>
+		$(function () {
+			$("#loginSend").on("click", function () {
+				let pws = $("#password").val();
+				let user = $("#username").val();
+				console.log(pws + "  " + user)
+				$.ajax({
+					url: "/Hibernate_web_teacher/accountLogin2",
+					type: "post",
+					dataType: "json",
+					data: {
+						"username": user,
+						"password": pws
+					},
+				}).done(function (data) {
+
+					console.log(data)
+
+					if (data.res == 1) { console.log(1) }
+					else { console.log(0) }
+				})
+			})
+		})
+	</script>-->
+
+	<!-- 	<script> -->
+
+	<!--   </script> -->
+
+</body>
+
+</html>

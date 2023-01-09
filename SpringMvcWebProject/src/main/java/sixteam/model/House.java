@@ -30,6 +30,5 @@ public class House {
 	public void setHousename(String housename) {
 		this.housename = housename;
 	}
-	
 
 }
