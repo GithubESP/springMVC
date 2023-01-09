@@ -27,9 +27,9 @@
 <%--     <jsp:include page="/fragment/topMVC.jsp" /> --%>
     <header>
         <h1 class="fa-solid fa-users">查詢所有會員</h1><a style="position: absolute; right: 0;" class="fa-solid fa-user-plus" href="t6_10_toAddAccount.controller/${accounts.get(accounts.size()-1).getId()+1}">新增</a> 
-<a style="position: relative; right: 15;" class="fa-solid fa-house" href="http://localhost:8080/SpringMvcWebProject/">首頁</a>
+<a style="position: relative; right: 15;" class="fa-solid fa-house" href="<c:url value='/index-background.jsp' />">首頁</a>
     </header>
-    <table id="table_id" class="display">
+    <table id="table_id" class="display">		
         <thead>
             <tr>
                 <th><span class="fa-solid fa-address-card">會員編號</span></th>
