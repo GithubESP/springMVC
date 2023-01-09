@@ -58,8 +58,8 @@
 									<tr>
 										<td><input type="text" name="name" required="required" /></td>
 										<td><input type="file" name="img" required="required" /></td>
-										<td><input type="textarea" cols="30" rows="20"
-											name="description" required="required" /></td>
+										<td><textarea cols="20" rows="10"
+											name="description" required="required"></textarea> </td>
 										<td><input type="date" name="start" required="required" /></td>
 										<td><input type="date" name="end" required="required" /></td>
 										<td><input type="text" name="location"
