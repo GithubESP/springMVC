@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>loginSystem</title>
+<title>管理者登入系統</title>
 </head>
 <body>
-<h3>LoginSystem</h3>
+<h3>管理者登入系統</h3>
 <form action="checklogin.controller" method="post">
     <table>
        <tr>
@@ -21,7 +21,7 @@
           <td>${errors.pwd}</td>
        </tr>
        <tr>
-          <td><button type="submit" value="login">Login</button></td>
+          <td><button type="submit" value="login">送出</button></td>
           <td>${errors.msg}</td>
        </tr>
     </table>

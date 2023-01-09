@@ -6,8 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import sixteam.t6_10.model.AccountManager;
@@ -19,12 +19,12 @@ public class AccountmanagerLoginController {
 	@Autowired
 	private AccountManagerService aService;
 	
-	@RequestMapping(path = "/adminLogin.controller", method = RequestMethod.GET)
+	@GetMapping("/adminLogin.controller")
 	public String processMainAction() {
 		return "t6_10/adminLogin";
 	}
 	
-	@RequestMapping(path = "/checklogin.controller", method = RequestMethod.POST)
+	@PostMapping("/checklogin.controller")
 	public String processAction(@RequestParam("userName") String user, @RequestParam("userPwd") String pwd, Model m) {
 		
 		Map<String, String> errors = new HashMap<String, String>();

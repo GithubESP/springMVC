@@ -33,7 +33,7 @@
     </header>
     
 <!--     <form action='/Hibernate_web_teacher/AddAccountControllersafe' enctype = 'multipart/form-data' method='post'> -->
-    <form action='<c:url value='/AddAccountControllersafe' />' enctype = 'multipart/form-data' method='post'>
+    <form action='<c:url value='/t6_10_doAddAccount.controller' />' enctype = 'multipart/form-data' method='post'>
     <table id="table_id" class="display">
         <thead>
             <tr>

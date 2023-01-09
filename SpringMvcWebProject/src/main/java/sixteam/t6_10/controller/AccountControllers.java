@@ -19,11 +19,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import sixteam.t6_10.model.Account;
 import sixteam.t6_10.model.AccountService;
@@ -34,38 +32,43 @@ public class AccountControllers {
 	@Autowired
 	private AccountService accountService;
 
+	@GetMapping("goBackIndex.controller")
+	public String goBackIndex() {
+		return "t6_10/adminLogin";
+	}
+	
 	// 注意
-	@GetMapping(path = "t6_10_showAll.controller")
+	@GetMapping("t6_10_showAll.controller")
 	public String showAllAccount(Model m) {
 		List<Account> accounts = accountService.showAllAccount();
 		m.addAttribute("accounts", accounts);
-		return "t6_10/showAllAccountsafe";
+		return "t6_10/allAccounts";
 	}
 
-	@GetMapping("/t6_10_addAccount.controller/{id}")
-	public String processMainAction(@PathVariable("id") int id, Model m) {
+	@GetMapping("t6_10_toAddAccount.controller/{id}")
+	public String toAddAccount(@PathVariable("id") int id, Model m) {
 		Account account = new Account(id);
 		m.addAttribute("account", account);
-		System.out.println(account + "新增的編號");
+		System.out.println(account + "<-新增的編號");
 		return "t6_10/addAccounts";
 	}
 
 	@GetMapping("/t6_10_delAccount.controller/{id}")
-	public ModelAndView processDeleteAction(@PathVariable("id") int accountId) {
+	public String deleteAccount(@PathVariable("id") int accountId) {
 		accountService.removeAccount(accountId);
 		System.out.println("刪除完成");
-		return new ModelAndView("redirect:/t6_10_showAll.controller");
+		return "redirect:/t6_10_showAll.controller";
 	}
 
-	////
-	@GetMapping("toUpdateAccount.controller/{id}")
+	// 改改看 //
+	@GetMapping("t6_10_toUpdateAccount.controller/{id}")
 	public String showAccount(@PathVariable("id") int id, Model m) {
 		Account account = accountService.showAccount(id);
 		m.addAttribute("account", account);
 		return "t6_10/updateAccount";
 	}
 
-	@PostMapping("/updateAccountControllersafe")
+	@PostMapping("t6_10_doUpdateAccount.controller")
 	public String updateAccount(@RequestParam("id") Integer id, @RequestParam("account") String account,
 			@RequestParam("password") String password, @RequestParam("photo") MultipartFile photo, Model m) {
 		System.out.println("執行updateAccount");
@@ -86,11 +89,11 @@ public class AccountControllers {
 		accountService.modify(aBean);
 		List<Account> list = accountService.showAllAccount();
 		m.addAttribute("accounts", list);
-		return "t6_10/showAllAccountsafe";
+		return "t6_10/allAccounts";
 	}
 
-	@PostMapping("/AddAccountControllersafe")
-	public ModelAndView processAction(@RequestParam("id") Integer id, @RequestParam("account") String account,
+	@PostMapping("/t6_10_doAddAccount.controller")
+	public String processAction(@RequestParam("id") Integer id, @RequestParam("account") String account,
 			@RequestParam("password") String password, @RequestParam("photo") MultipartFile photo, Model m)
 			throws IOException {
 		String type = photo.getContentType();
@@ -121,24 +124,23 @@ public class AccountControllers {
 				e.printStackTrace();
 			}
 		}
-		return new ModelAndView("redirect:t6_10_showAll.controller");
+		return "redirect:t6_10_showAll.controller";
 	}
 
-	@RequestMapping("/t6_10_img.controller/{id}")
+	@GetMapping("/t6_10_img.controller/{id}")
 	@ResponseBody
 	public byte[] processByteArrayImageAction(@PathVariable("id") int accountId, HttpServletRequest request,
 			HttpServletResponse response) throws IOException, SQLException {
 		Account account = accountService.showAccount(accountId);
 		Blob pBlob = account.getImage();
 		InputStream binaryStream = pBlob.getBinaryStream();
-//			byte[] pBytes = pBlob.getBytes(1l, (int)pBlob.length());
-//			InputStream inputStream = new ByteArrayInputStream(pBytes);
 
 		return IOUtils.toByteArray(binaryStream);
 	}
 
 	/*
-	 * ============================================== 方法區 ^^
+	 * ============================================== 
+	 * 方法區 ^^
 	 * ==============================================
 	 */
 
