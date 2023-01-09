@@ -36,6 +36,7 @@ public class ResponseController {
 	@ResponseBody
 	public byte[] processByteArrayImageAction(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		InputStream in = request.getServletContext().getResourceAsStream("/WEB-INF/resources/images/images06.jpg");
+//		InputStream in = request.getServletContext().getResourceAsStream("c:/temp/people_photo/78945623.jpg");
 		return IOUtils.toByteArray(in);
 	}
 }

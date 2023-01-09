@@ -30,9 +30,9 @@ public class UploadFileController {
 		
 		String saveFileDir ="c:/temp/upload";
 		File saveFilePath = new File(saveFileDir,fileName);
-		
-		byte[] b = mf.getBytes();
+		System.out.println(saveFilePath);
 		mf.transferTo(saveFilePath);
+		byte[] b = mf.getBytes();
 		if(fileName != null && fileName.length()!=0) {
 			
 			savePicture(fileName,b);
