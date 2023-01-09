@@ -1,4 +1,4 @@
-package sixteam.t6_27;
+package sixteam.t6_27.model;
 
 import java.util.List;
 

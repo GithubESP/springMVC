@@ -42,18 +42,16 @@
       </thead>
        
       <tbody>
-      <form enctype="multipart/form-data" action="<c:url context='${pageContext.request.contextPath}' value='/AddController'/>" method="POST" name="loginForm">
         <tr>
           <td><input type="text" name="postTitle" required="required"></td>
           <td><input type="text" name="postDate" required="required"></td>
           <td><input type="text" name="postContent" required="required"></td>
-          <td><input type="file" name="postImage" required="required"></td>
+          <td><input type="file" name=img></td>
           <td><input type="text" name="postLike"></td>
           <td><input type="text" name="postDislike"></td>
           <td><input type="text" name="postComment"></td>
           <td><input type="submit" value="送出"></td>
         </tr>
-        </form>
       </tbody>
       
     </table>

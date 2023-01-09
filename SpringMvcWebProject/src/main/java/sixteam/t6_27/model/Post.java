@@ -1,4 +1,4 @@
-package sixteam.t6_27;
+package sixteam.t6_27.model;
 
 import java.io.Serializable;
 import java.sql.Blob;
@@ -37,27 +37,27 @@ public class Post  implements Serializable{
 	@Column(name="postComment")
 	private String postComment;
 	
-	@Column(name = "FILENAME")
-	private String filename;
-	
 	@Column(name = "PICTURE")
 	private byte[] picture;
 	
 	public Post() {
 	}
 
-	public Post(Integer postId, String postTitle, String postDate, String postContent, String postLike,
-			String postDislike, String postComment, String filename, byte[] picture) {
-		super();
-		this.postId = postId;
+	public Post(String postTitle, String postDate, String postContent, String postLike,
+			String postDislike, String postComment, byte[] picture) {
+		
 		this.postTitle = postTitle;
 		this.postDate = postDate;
 		this.postContent = postContent;
 		this.postLike = postLike;
 		this.postDislike = postDislike;
 		this.postComment = postComment;
-		this.filename = filename;
 		this.picture = picture;
+	}
+
+	public Post(Integer postId, String postTitle, String postDate, String postContent, String postLike,
+			String postDislike, String postComment, byte[] b) {
+		
 	}
 
 	public Integer getPostId() {
@@ -115,15 +115,7 @@ public class Post  implements Serializable{
 	public void setPostComment(String postComment) {
 		this.postComment = postComment;
 	}
-
-	public String getFilename() {
-		return filename;
-	}
-
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
-
+	
 	public byte[] getPicture() {
 		return picture;
 	}

@@ -41,39 +41,36 @@
 <!--                                 DataTable Example -->
                             </div>
                             <div class="card-body">
+                <form action="<c:url value='/t6_27update.controller'/>" method="post"
+					enctype="multipart/form-data">            
                                 <table id="datatablesSimple">
 		<thead>
 			<tr>
-				<th>貼文日期</th>
-				<th>標題</th>
-				<th>內容</th>
-				<th>圖片</th>
-				<th>推</th>
-				<th>噓</th>
-				<th>操作</th>
+        	  <th>編號</th>
+        	  <th>標題</th>
+        	  <th>貼文日期</th>
+        	  <th>內容</th>
+        	  <th>圖片</th>
+        	  <th>推</th>
+        	  <th>噓</th>
+          	  <th>留言</th>
+          	  <th colspan="2">操作</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="bean" items="${postlist}">
-				<tr>
-					<td>${bean.postDate}</td>
-          <td>${bean.postTitle}</td>
-          <td>${bean.postContent}</td>
-          <td><img height='100' width='80'src="t6_27img.controller/${bean.picture}"></td>
-          <td>${bean.postLike}</td>
-          <td>${bean.postDislike}</td>
-          <td>${bean.postComment}</td>
-     				<td>
-					<div style="display:inline">
-           <a href="t6_27delete.controller/${bean.postId}"><input type="submit" value="刪除"></a>
-           <a href="t6_27updatePage.controller/${bean.postId}"><input type="submit" value="修改"></a>
-				</div>
-				</tr>
-     				
-			</c:forEach>
-		</tbody>
+        <tr>
+          <td><input type="text" name="postId" value="${bean.postId}" readonly/></td>
+          <td><input type="text" name="postTitle" value="${bean.postTitle}" required="required"/></td>
+          <td><input type="text" name="postDate" value="${bean.postDate}" required="required"/></td>
+          <td><input type="text" name="postContent" value="${bean.postContent}" required="required"/></td>
+          <td><input type="file" name="img" required="required"/></td>
+          <td><input type="text" name="postLike" value="${bean.postLike}"/></td>
+          <td><input type="text" name="postDislike" value="${bean.postDislike}"/></td>
+          <td><input type="text" name="postComment" value="${bean.postComment}"/></td>
+          <td><input type="submit" value="修改"/></td>
+        </tr>
+      </tbody>
                                 </table>
-					<div><form action="t6_27addPage.controller"><input type="submit" value="新增貼文"></form></div>
                             </div>
                         </div>
                     </div>
