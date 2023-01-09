@@ -40,7 +40,7 @@ public class TempleController {
 	@RequestMapping(path = "/temple.controller",method = RequestMethod.GET)
 	public String processMainAction() {
 		
-		return "SellectAll";
+		return "t6_06/FindTemple";
 	}
 	
 //	---------------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ public class TempleController {
 		ArrayList<TempleBean> list = new ArrayList<TempleBean>();
 		list.add(tmpb);
 		m2.addAttribute("tmp", list);
-		return "ContralData";
+		return "t6_06/ContralData";
 	}
 	
 	//新增資料
@@ -77,7 +77,7 @@ public class TempleController {
 		
 		tService.insertTemple(tmpb);
 		
-		return "FindTemple";
+		return "t6_06/FindTemple";
 		
 	}
 	
@@ -90,7 +90,7 @@ public class TempleController {
 			   @RequestParam("wGS84Y") Double wGS84Y, @RequestParam("uniformnumbers") int uniformnumbers) {
 		TempleBean tmpb = new TempleBean(templeId,templeName,deitiesName,administrative,address,register,sect,phone,principal,other,wGS84X,wGS84Y,uniformnumbers);
 		tService.updateOneTemple(tmpb);
-		return "FindTemple";
+		return "t6_06/FindTemple";
 	}
 	
 	//刪除
@@ -98,15 +98,15 @@ public class TempleController {
 	public String templeDeleteAction(@RequestParam("templeId")String templeId) {
 		System.out.println(templeId);
 		tService.deleteTemple(templeId);
-		return "FindTemple";
+		return "t6_06/FindTemple";
 	}
 	
-	@RequestMapping(path = "/templeSellectAllAction",method = RequestMethod.GET)
+	@RequestMapping(path = "/templeSellectAllAction",method = RequestMethod.POST)
 	public String templeSellectAllAction(Model m2) {
 		List<TempleBean> beans = tService.sellectAll();
 		
 		m2.addAttribute("tmp", beans);
-		return "SellectAll";
+		return "t6_06/SellectAll";
 	}
 	
 }
