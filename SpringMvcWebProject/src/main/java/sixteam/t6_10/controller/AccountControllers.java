@@ -34,7 +34,7 @@ public class AccountControllers {
 
 	@GetMapping("goBackIndex.controller")
 	public String goBackIndex() {
-		return "t6_10/adminLogin";
+		return "index-background.jsp";
 	}
 	
 	// 注意

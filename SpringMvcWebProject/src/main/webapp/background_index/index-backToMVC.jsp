@@ -84,15 +84,15 @@
 <!-- 								其他功能 -->
 <!--                             </a> -->
                             <a class="nav-link" href="adminLogin.controller">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 會員系統
                             </a>
                             <a class="nav-link" href="temple.controller">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-university"></i></div>
                                 廟宇搜尋
                             </a>
                             <a class="nav-link" href="actives">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
                                 活動報名
                             </a>
                             <a class="nav-link" href="front_index.jsp">
@@ -100,11 +100,11 @@
                                 物品購物車
                             </a>
                             <a class="nav-link" href="selectaction.controller2">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-heart"></i></div>
                                 月老配對系統
                             </a>
                             <a class="nav-link" href="front_index.jsp">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-comment"></i></div>
                                 社群論壇
                             </a>
 <!--                             選單結束 -->
