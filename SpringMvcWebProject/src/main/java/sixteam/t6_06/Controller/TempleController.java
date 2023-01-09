@@ -101,12 +101,16 @@ public class TempleController {
 		return "t6_06/FindTemple";
 	}
 	
-	@RequestMapping(path = "/templeSellectAllAction",method = RequestMethod.POST)
+	@RequestMapping(path = "/templeSellectAllAction")
 	public String templeSellectAllAction(Model m2) {
 		List<TempleBean> beans = tService.sellectAll();
 		
 		m2.addAttribute("tmp", beans);
 		return "t6_06/SellectAll";
 	}
-	
+	@RequestMapping("/test")
+	public String test() {
+		return "t6_06/ClassInsert";
+	}
+
 }
