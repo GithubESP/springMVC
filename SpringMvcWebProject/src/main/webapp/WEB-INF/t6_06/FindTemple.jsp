@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,21 +18,19 @@
 <h2>查詢寺廟資料</h2>
  <br>
 <hr>
-<form:form action='templeFindByIdAction' method="POST" modelAttribute= "temple">
+<form action="<c:url value='/templeFindByIdAction' />" method="POST">
     <table>
          <tr>
              <td align="RIGHT">編號：</td>
-             <td align="LEFT"><input type="text" name="templeId" value="1" size="20"></td>
+             <td align="LEFT"><input type="text" name="templeId" value="3" size="20"></td>
          </tr>
         <tr>
             <td colspan="2" align="center">
             <input type="submit" value="提交" >
-            <input    type="button"    name="Button"    value="新增"    
-            onClick="location='templeFindByIdAction'">
              </td>
             </tr>
     </table>
-</form:form>
+</form>
 <p/>
 </div>
 </body>

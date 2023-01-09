@@ -31,9 +31,10 @@ public class TempleDao {
 	}
 	
 	//更改
+	@Transactional
 	public TempleBean updateOneTemple(TempleBean tmpb) {
 		Session session = factory.openSession();
-		
+//		session.beginTransaction();
 		TempleBean tmpBean = session.get(TempleBean.class, tmpb.getTempleId());
 		if(tmpBean != null) {
 			tmpBean.setTempleName(tmpb.getTempleName());
@@ -48,7 +49,9 @@ public class TempleDao {
 			tmpBean.setWGS84X(tmpb.getWGS84X());
 			tmpBean.setWGS84Y(tmpb.getWGS84Y());
 			tmpBean.setUniformnumbers(tmpb.getUniformnumbers());
-			session.getTransaction().commit();
+			session.flush();
+			session.close();
+//			session.getTransaction().commit();
 		}
 		
 		return tmpBean;
