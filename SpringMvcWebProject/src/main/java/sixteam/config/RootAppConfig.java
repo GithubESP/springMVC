@@ -46,7 +46,11 @@ public class RootAppConfig {
 		props.put("hibernate.dialect", org.hibernate.dialect.SQLServerDialect.class);
 		props.put("hibernate.show_sql", Boolean.TRUE);
 		props.put("hibernate.format_sql", Boolean.TRUE);
+<<<<<<< HEAD
 		props.put("hibernate.allow_update_outside_transaction", "true");
+=======
+		props.put("hibernate.allow_update_outside_transaction", Boolean.TRUE);
+>>>>>>> origin/t6_06
 		//props.put("hibernate.current_session_context_class", "thread");
 		return props;
 	}
