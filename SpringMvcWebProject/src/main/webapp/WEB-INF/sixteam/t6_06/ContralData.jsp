@@ -101,10 +101,10 @@ form {
 				<tr bgcolor='lightblue'>
 					<td height="50" colspan="2" align="center">
 						<input value= "更改" type="submit" formaction="updateTempleDataAction">
-						<input value= "新增" type="submit" formaction="insertTempleData">
+						<input value= "新增" type="submit" formaction="insertTempleDataAction">
 						<input value= "刪除" type="submit" formaction="templeDeleteAction">
-						<input value= "回查詢" type="submit" formaction="./t6_6.jsp/FindTemple.jsp">
-						<input value= "顯示所有資料" type="submit" formaction="SellectAllServlet.do">
+						<input value= "回查詢" type="submit" formaction="temple.controller">
+						<input value= "顯示所有資料" type="submit" formaction="templeSellectAllAction">
 						</td>
 				</tr>
 			</tbody>
