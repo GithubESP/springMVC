@@ -76,5 +76,5 @@ public class WebAppConfig implements WebMvcConfigurer {
 		cnvr.setDefaultViews(list);
 		return cnvr;
 	}
-	
+	 
 }
