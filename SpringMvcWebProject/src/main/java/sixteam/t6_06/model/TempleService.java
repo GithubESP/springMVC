@@ -1,5 +1,7 @@
 package sixteam.t6_06.model;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,4 +29,7 @@ public class TempleService {
 		tDao.deleteTemple(templeId);
 	}
 	
+	public List<TempleBean> sellectAll() {
+		return tDao.sellectAll();
+	}
 }

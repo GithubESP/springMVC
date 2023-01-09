@@ -1,6 +1,7 @@
 package sixteam.t6_06.Controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,15 +36,15 @@ public class TempleController {
 //		m.addAttribute("tmp",list);
 //		return "ContralData";
 //	}
-	
+	//傳導到搜尋id的網頁
 	@RequestMapping(path = "/temple.controller",method = RequestMethod.GET)
 	public String processMainAction() {
 		
-		return "FindTemple";
+		return "SellectAll";
 	}
 	
 //	---------------------------------------------------------------------------------------
-	//查詢 Postman測試成功
+	//查詢 
 	@PostMapping("/templeFindByIdAction")
 	public String templeFindByIdAction(@RequestParam("templeId") String templeId,Model m2) {
 		TempleBean tmpb = tService.findById(templeId);
@@ -53,7 +54,7 @@ public class TempleController {
 		return "ContralData";
 	}
 	
-	//新增資料 Postman測試成功
+	//新增資料
 	@PostMapping("/insertTempleData")
 	public String insertTempleDataAction(@RequestParam("templeName") String templeName,@RequestParam("deitiesName") String deitiesName,
 								   @RequestParam("administrative") String administrative,@RequestParam("address")String address,
@@ -92,7 +93,7 @@ public class TempleController {
 		return "FindTemple";
 	}
 	
-	//刪除 Postman測試成功
+	//刪除
 	@PostMapping("/templeDeleteAction")
 	public String templeDeleteAction(@RequestParam("templeId")String templeId) {
 		System.out.println(templeId);
@@ -100,20 +101,12 @@ public class TempleController {
 		return "FindTemple";
 	}
 	
-
-//	
-//	
-//	@RequestMapping(path = "/templeFindByIdAction2",method = RequestMethod.POST)
-//	public String templeFindByIdAction2(@ModelAttribute("TempleBean") String templeId) {
-//		TempleBean tmpb = tService.findById(templeId);
-//		System.out.println(tmpb);
-//		if(tmpb!=null) {
-//			return "Result:" + tmpb.getTempleId() +" " + tmpb.getTempleName()+" "+ tmpb.getDeitiesName() + " " + tmpb.getAdministrative()
-//			 + " "+tmpb.getAddress()+" " + tmpb.getRegister()+" "+tmpb.getSect()+" "+tmpb.getPhone()+" "+tmpb.getPrincipal()+" "+tmpb.getOther()+" "+tmpb.getWGS84X()
-//			 +" "+tmpb.getWGS84Y()+" "+tmpb.getUniformnumbers();
-//		}
-//		
-//		return "no Result";
-//	}
+	@RequestMapping(path = "/templeSellectAllAction",method = RequestMethod.GET)
+	public String templeSellectAllAction(Model m2) {
+		List<TempleBean> beans = tService.sellectAll();
+		
+		m2.addAttribute("tmp", beans);
+		return "SellectAll";
+	}
 	
 }

@@ -1,10 +1,14 @@
 package sixteam.t6_06.model;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 
 @Repository
 @Transactional
@@ -34,7 +38,6 @@ public class TempleDao {
 	@Transactional
 	public TempleBean updateOneTemple(TempleBean tmpb) {
 		Session session = factory.openSession();
-//		session.beginTransaction();
 		TempleBean tmpBean = session.get(TempleBean.class, tmpb.getTempleId());
 		if(tmpBean != null) {
 			tmpBean.setTempleName(tmpb.getTempleName());
@@ -51,7 +54,6 @@ public class TempleDao {
 			tmpBean.setUniformnumbers(tmpb.getUniformnumbers());
 			session.flush();
 			session.close();
-//			session.getTransaction().commit();
 		}
 		
 		return tmpBean;
@@ -59,7 +61,7 @@ public class TempleDao {
 	
 	//刪除
 	public void deleteTemple(String templeId) {
-		Session session = factory.getCurrentSession();
+		Session session = factory.openSession();
 		TempleBean tmpBean = session.get(TempleBean.class, templeId);
 		
 		if(tmpBean != null) {
@@ -68,18 +70,16 @@ public class TempleDao {
 	}
 	
 	//找全部
-//	public List<TempleBean> sellectAll() {
-//		Session session = factory.openSession();
-//		try {
-//			Query<TempleBean> query = session.createQuery("from TempleBean order by templeId", TempleBean.class);
-//			List<TempleBean> beans = query.getResultList();
-//			return beans;
-//		}catch(Exception e) {
-//			session.getTransaction().rollback();
-//			e.printStackTrace();
-//		}finally {
-//			HibernateUtil.closeSessionFactory();
-//		}
-//		return null;
-//	}
+	public List<TempleBean> sellectAll() {
+		Session session = factory.openSession();
+		try {
+			Query<TempleBean> query = session.createQuery("from TempleBean order by templeId", TempleBean.class);
+			List<TempleBean> beans = query.getResultList();
+			return beans;
+		}catch(Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
