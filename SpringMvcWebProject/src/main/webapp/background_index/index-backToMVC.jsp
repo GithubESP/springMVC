@@ -83,7 +83,7 @@
 <!--                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div> -->
 <!-- 								其他功能 -->
 <!--                             </a> -->
-                            <a class="nav-link" href="front_index.jsp">
+                            <a class="nav-link" href="adminLogin.controller">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 會員系統
                             </a>
@@ -128,12 +128,12 @@
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2022</div>
-                    <div>
-                        <a href="#">Privacy Policy</a>
-                        &middot;
-                        <a href="#">Terms &amp; Conditions</a>
-                    </div>
+                    <div class="text-muted">Copyright &copy; </div>
+<!--                     <div> -->
+<!--                         <a href="#">Privacy Policy</a> -->
+<!--                         &middot; -->
+<!--                         <a href="#">Terms &amp; Conditions</a> -->
+<!--                     </div> -->
                 </div>
             </div>
         </footer>
