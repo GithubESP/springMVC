@@ -44,12 +44,12 @@ public class WebAppConfig implements WebMvcConfigurer {
 //	}
 //	
 //
-//	@Override
-//	public void addViewControllers(ViewControllerRegistry registry) {
-//		registry.addRedirectViewController("/", "membersmain.controller");
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		registry.addRedirectViewController("/", "index-background.jsp");
 //		registry.addViewController("/funny.action").setViewName("form");
-//
-//	}
+	}
+	
 	@Bean
 	public CommonsMultipartResolver multipartResolver() {
 		CommonsMultipartResolver cmr = new CommonsMultipartResolver();
