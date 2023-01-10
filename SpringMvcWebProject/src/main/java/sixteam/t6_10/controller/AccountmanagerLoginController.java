@@ -50,6 +50,7 @@ public class AccountmanagerLoginController {
 		}
 		
 		errors.put("msg", "請輸入正確的帳號或密碼");		
+//		return "t6_10/adminLogin";
 		return "t6_10/adminLogin";
 			
 		}

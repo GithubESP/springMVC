@@ -33,17 +33,19 @@
                                 </div>
                                 <div class="card-body">
                                     <form action="checklogin.controller" method="post">
-                                    	<div>帳號:${errors.name}</div>
+                                   		 
                                         <div class="form-floating mb-3">
+                                      
                                             <input class="form-control" id="inputEmail" type="text" name="userName"
                                                 placeholder="name@example.com" />
-                                            <label for="inputEmail">請輸入8~20字(含大小寫英文)</label>
+                                            <label for="inputEmail">請輸入8~20字(含大小寫英文)</label><span>${errors.name}</span>
                                         </div>
-                                        <div>密碼:${errors.pwd}</div>
+                                        
                                         <div class="form-floating mb-3">
+                                        	
                                             <input class="form-control" id="inputPassword" type="password" name="userPwd"
                                                 placeholder="Password" />
-                                            <label for="inputPassword">請輸入密碼</label>
+                                            <label for="inputPassword">請輸入密碼</label><span>${errors.pwd}</span>
                        
                                         </div>
                                         <span>${errors.msg}</span>
