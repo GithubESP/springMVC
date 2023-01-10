@@ -21,7 +21,7 @@ public class AccountmanagerLoginController {
 	
 	@GetMapping("/adminLogin.controller")
 	public String processMainAction() {
-		return "t6_10/login10";
+		return "t6_10/adminLogin";
 	}
 	
 	@PostMapping("/checklogin.controller")
@@ -39,7 +39,7 @@ public class AccountmanagerLoginController {
 		}
 		
 		if(errors!=null && !errors.isEmpty()) {
-			return "t6_10/login10";
+			return "t6_10/adminLogin";
 		}
 		
 		boolean status = aService.checkLogin(new AccountManager(user, pwd));
@@ -51,7 +51,7 @@ public class AccountmanagerLoginController {
 		
 		errors.put("msg", "請輸入正確的帳號或密碼");		
 //		return "t6_10/adminLogin";
-		return "t6_10/login10";
+		return "t6_10/adminLogin";
 			
 		}
 	}

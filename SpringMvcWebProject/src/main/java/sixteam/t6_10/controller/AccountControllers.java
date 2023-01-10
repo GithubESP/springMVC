@@ -34,7 +34,7 @@ public class AccountControllers {
 
 	@GetMapping("goBackIndex.controller")
 	public String goBackIndex() {
-		return "index-background.jsp";
+		return "index-background";
 	}
 	
 	// 注意
