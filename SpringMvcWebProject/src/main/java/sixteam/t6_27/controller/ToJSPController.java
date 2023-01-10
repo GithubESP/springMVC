@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ToJSPController {
 	@GetMapping("/ToJSPController")
 	public String toHtml() {
+		System.out.println("有進ToJSPController");
 		return ("redirect:/t6_27show.controller");
 	}
 }

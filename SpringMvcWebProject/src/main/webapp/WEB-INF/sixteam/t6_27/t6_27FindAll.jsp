@@ -59,7 +59,7 @@
 					<td>${bean.postDate}</td>
           <td>${bean.postTitle}</td>
           <td>${bean.postContent}</td>
-          <td><img height='100' width='80'src="t6_27img.controller/${bean.picture}"></td>
+          <td><img height='100' width='80'src="<c:url value='/t6_27img.controller/${bean.postId}' />"></td>
           <td>${bean.postLike}</td>
           <td>${bean.postDislike}</td>
           <td>${bean.postComment}</td>

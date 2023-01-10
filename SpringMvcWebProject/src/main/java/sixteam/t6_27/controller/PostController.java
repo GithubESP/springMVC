@@ -125,7 +125,9 @@ public class PostController {
 		Post post = pService.findById(postId);
 		byte[] picbyte = post.getPicture();
 		InputStream is = new ByteArrayInputStream(picbyte);
-
+		System.out.println(postId);
+		System.out.println(is);
+		System.out.println(picbyte);
 		return IOUtils.toByteArray(is);
 	}
 
