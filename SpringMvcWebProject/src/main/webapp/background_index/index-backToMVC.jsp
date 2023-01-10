@@ -103,7 +103,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-heart"></i></div>
                                 月老配對系統
                             </a>
-                            <a class="nav-link" href="front_index.jsp">
+                            <a class="nav-link" href="ToJSPController">
                                 <div class="sb-nav-link-icon"><i class="fas fa-comment"></i></div>
                                 社群論壇
                             </a>
