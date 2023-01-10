@@ -27,7 +27,7 @@ public class RootAppConfig {
 	@Bean
 	public DataSource dataSource() throws IllegalArgumentException, NamingException {
 		JndiObjectFactoryBean jndiBean = new JndiObjectFactoryBean();
-		jndiBean.setJndiName("java:comp/env/connectSqlServerJdbc/SystemService");
+		jndiBean.setJndiName("java:comp/env/connectSqlServerJdbc/SystemServiceSixteam");
 		jndiBean.afterPropertiesSet();
 		DataSource ds = (DataSource)jndiBean.getObject();
 		return ds;
