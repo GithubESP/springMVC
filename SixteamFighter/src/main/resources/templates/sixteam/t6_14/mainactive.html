@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>後臺管理系統</title>
+        <link th:href="@{/background_index/css/index_backgroundOnly.css}" rel="stylesheet" />
+        
+        <link th:href="@{/background_index/css/styles.css}" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    
+    <body class="sb-nav-fixed">
+    <div>
+<!--         <div th:replace="background_index/index-backToMVC :: header"></div> -->
+    </div>
+    
+            <div id="layoutSidenav_content" style="margin-left: 250px">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4" style=" text-align:center" th:text="#{actives_overview}"></h1>
+                        <ol class="breadcrumb mb-4">
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+		<thead>
+
+			<tr>
+				<th>活動編號</th>
+          <th>活動名稱</th>
+          <th>活動圖片</th>
+          <th>活動描述</th>
+          <th>活動開始時間</th>
+          <th>活動結束時間</th>
+          <th>活動地點</th>
+          <th>活動主辦單位</th>
+          <th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<th:block th:each="act : ${actives}">
+    <tr>
+      <td th:text="${act.activeID}"></td>
+      <td th:text="${act.activeName}"></td>
+      <td>
+        <img height='100' width='80' th:src="@{'/actives/toImg/' + ${act.activeID}}" />
+      </td>
+      <td th:text="${act.activeDescription}"></td>
+      <td th:text="${act.activeStartDate}"></td>
+      <td th:text="${act.activeEndDate}"></td>
+      <td th:text="${act.activeLocation}"></td>
+      <td th:text="${act.activeHost}"></td>
+    </tr>
+  </th:block>
+</table>
+				<div style="display:inline">
+   <a th:href="@{/actives/del/{activeID}(activeID=${act.activeID})}">
+       <input type="submit" value="刪除" />
+   </a>
+   <a th:href="@{/actives/updateView/{activeID}(activeID=${act.activeID})}">
+       <input type="button" value="修改" />
+   </a>
+</div>
+<div>
+    <form th:action="@{/actives/addView}">
+        <input type="submit" value="新增紀錄" />
+    </form>
+</div>
+ 
+            
+            
+            
+           
+ 
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script th:src="@{/background_index/js/scripts.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script th:src="@{/background_index/assets/demo/chart-area-demo.js}"></script>
+<script th:src="@{/background_index/assets/demo/chart-bar-demo.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script th:src="@{/background_index/js/datatables-simple-demo.js}"></script>
+
+        
+    </body>
+</html>
