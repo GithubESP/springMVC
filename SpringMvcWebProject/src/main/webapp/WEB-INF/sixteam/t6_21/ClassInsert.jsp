@@ -55,9 +55,9 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td><input type="text" name="name"/></td>
-										<td><input type="file" name="uploadFile"/></td>
-										<td><input type="text" name="teacher"/></td>
+										<td><input type="text" name="name" required /></td>
+										<td><input type="file" name="uploadFile" required /></td>
+										<td><input type="text" name="teacher" required /></td>
 										<td><button type="submit" value="upload">確認</button></td>
 									</tr>
 								</tbody>

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -43,38 +44,26 @@ public class ClassDelNUpdateController {
 	}
 
 	@PostMapping("/updateClass.controller")
-	public String processUpdateAction(@RequestParam("classId") int classId, @RequestParam("className") String name,
-			@RequestParam("classPicture1") MultipartFile mf, @RequestParam("classTeacherName") String teacher, Model m)
-			throws IOException {
-		System.out.println("-------------------");
-		String fileName = mf.getOriginalFilename();
-		byte[] b = mf.getBytes();
-		ClassBean cbBean = new ClassBean();
-//		ClassBean cBean = classService.findById(classId);
-		if (fileName != null && fileName.length() != 0) {
-			cbBean.setClassId(classId);
-			cbBean.setClassName(name);
-			cbBean.setClassPicture1(b);
-			cbBean.setClassPictureName(fileName);
-			cbBean.setClassTeacherName(teacher);
-			classService.update(cbBean);
-//			}else {
-//				cbBean.setClassName(name);
-//				cbBean.setClassTeacherName(teacher);
-//				updateClass(name,teacher);
-		}
+	 public String processUpdateAction(@RequestParam("classId") int classId, @RequestParam("className") String name,
+	   @RequestParam("classPicture1") @Nullable MultipartFile mf, @RequestParam("classTeacherName") String teacher, Model m)
+	   throws IOException {
+	  String fileName = mf.getOriginalFilename();
+	  byte[] b = mf.getBytes();
+	  
+	  if (fileName != null && fileName.length() != 0) {
+	  ClassBean cbBean = new ClassBean(classId,name,teacher,fileName,b);
+	  classService.update(cbBean);
+	  }else {
+	   ClassBean cbBean = classService.findById(classId);
+	   String fileName1 = cbBean.getClassPictureName();
+	   byte[] c = cbBean.getClassPicture1();
+	   ClassBean cbBean1 = new ClassBean(classId,name,teacher,fileName1,c);
+	   classService.update(cbBean1);
+	  }
+	  
+	  List<ClassBean> classlist = classService.selectAll();
+	  m.addAttribute("classList", classlist);
+	  return "t6_21/classMaintainList";
 
-		List<ClassBean> classlist = classService.selectAll();
-		m.addAttribute("classList", classlist);
-		return "t6_21/classMaintainList";
-
-	}
-//	private void updateClass(String className,String teacherName) {
-//		ClassBean cBean = new ClassBean();
-//		cBean.setClassName(className);
-//		cBean.setClassTeacherName(teacherName);
-//		classService.update(cBean);
-//
-//	}
-
+	 }
 }
