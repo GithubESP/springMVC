@@ -13,7 +13,7 @@ public class TempleService {
 	@Autowired
 	private TempleDao tDao;
 	
-	public TempleBean findById(String templeId) {
+	public TempleBean findById(int templeId) {
 		return tDao.findById(templeId);
 	}
 	
@@ -25,7 +25,8 @@ public class TempleService {
 		return tDao.updateOneTemple(tmpb);
 	}
 	
-	public void deleteTemple(String templeId) {
+	public void deleteTemple(int templeId) {
+		System.out.println("進deleteTemple");
 		tDao.deleteTemple(templeId);
 	}
 	

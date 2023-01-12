@@ -17,7 +17,7 @@ public class TempleDao {
 	private SessionFactory factory;
 	
 	//搜尋
-	public TempleBean findById(String templeId) {
+	public TempleBean findById(int templeId) {
 		Session session = factory.openSession();
 		
 		TempleBean tmpb = session.get(TempleBean.class, templeId);
@@ -60,12 +60,19 @@ public class TempleDao {
 	}
 	
 	//刪除
-	public void deleteTemple(String templeId) {
+	public void deleteTemple(int templeId) {
+		System.out.println("01");
 		Session session = factory.openSession();
+		System.out.println("02");
 		TempleBean tmpBean = session.get(TempleBean.class, templeId);
+		System.out.println("03");
 		
 		if(tmpBean != null) {
+			
+			System.out.println("04");
 			session.delete(tmpBean);
+			session.flush();
+			System.out.println("05");
 		}
 	}
 	
@@ -73,7 +80,7 @@ public class TempleDao {
 	public List<TempleBean> sellectAll() {
 		Session session = factory.openSession();
 		try {
-			Query<TempleBean> query = session.createQuery("from TempleBean order by templeId", TempleBean.class);
+			Query<TempleBean> query = session.createQuery("from TempleBean where templeId<40 order by templeId", TempleBean.class);
 			List<TempleBean> beans = query.getResultList();
 			return beans;
 		}catch(Exception e) {

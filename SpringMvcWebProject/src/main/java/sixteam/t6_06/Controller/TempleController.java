@@ -46,7 +46,7 @@ public class TempleController {
 //	---------------------------------------------------------------------------------------
 	//查詢 
 	@PostMapping("/templeFindByIdAction")
-	public String templeFindByIdAction(@RequestParam("templeId") String templeId,Model m2) {
+	public String templeFindByIdAction(@RequestParam("templeId") int templeId,Model m2) {
 		TempleBean tmpb = tService.findById(templeId);
 		ArrayList<TempleBean> list = new ArrayList<TempleBean>();
 		list.add(tmpb);
@@ -83,7 +83,7 @@ public class TempleController {
 	
 	//更改
 	@PostMapping("/updateTempleDataAction")
-	public String updateTempleDataAction(@RequestParam("templeId") String templeId,@RequestParam("templeName") String templeName,@RequestParam("deitiesName") String deitiesName,
+	public String updateTempleDataAction(@RequestParam("templeId") int templeId,@RequestParam("templeName") String templeName,@RequestParam("deitiesName") String deitiesName,
 			   @RequestParam("administrative") String administrative,@RequestParam("address")String address,
 		       @RequestParam("register") String register,@RequestParam("sect") String sect, @RequestParam("phone") String phone, 
 			   @RequestParam("principal") String principal, @RequestParam("other") String other, @RequestParam("wGS84X") Double wGS84X,
@@ -94,11 +94,11 @@ public class TempleController {
 	}
 	
 	//刪除
-	@PostMapping("/templeDeleteAction")
-	public String templeDeleteAction(@RequestParam("templeId")String templeId) {
+	@GetMapping("/templeDeleteAction")
+	public String templeDeleteAction(@RequestParam("templeId")int templeId) {
 		System.out.println(templeId);
 		tService.deleteTemple(templeId);
-		return "t6_06/FindTemple";
+		return "redirect:templeSellectAllAction";
 	}
 	
 	@RequestMapping(path = "/templeSellectAllAction")

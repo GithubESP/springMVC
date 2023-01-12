@@ -18,7 +18,7 @@ public class TempleBean {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		@Column(name = "templeId")
-		private String templeId;   			// 編號
+		private int templeId;   			// 編號
 		
 		@Column(name = "templeName")
 		private String templeName;   			// 寺廟名稱
@@ -58,7 +58,7 @@ public class TempleBean {
 //		private FileInputStream
 		
 		
-		public TempleBean(String templeId, String templeName, String deitiesName, String administrative, String address,
+		public TempleBean(int templeId, String templeName, String deitiesName, String administrative, String address,
 				String register, String sect, String phone, String principal, String other, Double wGS84X, Double wGS84Y,
 				int uniformnumbers) {
 			super();
@@ -108,10 +108,10 @@ public class TempleBean {
 					+ ", 座標Y=" + WGS84Y + ", 統一編號=" + uniformnumbers + "]";
 		}
 
-		public String getTempleId() {
+		public int getTempleId() {
 			return templeId;
 		}
-		public void setTempleId(String templeId) {
+		public void setTempleId(int templeId) {
 			this.templeId = templeId;
 		}
 		public String getTempleName() {

@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html>
 <head>
+<script src="https://kit.fontawesome.com/e136b47e13.js" crossorigin="anonymous"></script>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -104,10 +105,14 @@
 											<td>${tmp.uniformnumbers}<input type="hidden"
 												name="uniformnumbers" value="${tmp.uniformnumbers}"></td>
 											<td><a
-												href="<c:url value='/UpdateTempleData.do?id=${tmp.templeId}'/>"><input
-													type="submit" value="刪除"></a> <a
-												href="<c:url value='/ClassPreUpdateServlet.do?classId=${bean.classId}'/>"><input
-													type="submit" value="修改"></a></td>
+												href="<c:url value='/templeDeleteAction?templeId=${tmp.templeId}'/>"><input
+													type="submit" value="刪除" class="fa-solid fa-trash"></a> <a
+												href="<c:url value='/ClassPreUpdateServlet.do?classId=${tmp.templeId}'/>"><input
+													type="submit" value="修改"></a>
+												<!--	<input type="button" value="刪除" id="${tmp.templeId}"
+											class="templeDeleteAction" />-->
+													
+													</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -117,7 +122,6 @@
                     </div>
                 </main>
             </div>
-        </div>
 
 
 	
