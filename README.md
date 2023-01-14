@@ -1,2 +1,2 @@
-<h1>EEIT56_Team6專案
+<h1>EEIT56_ Team6專案
 
